@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "526628003979",
+    "firebase_url": "https://faculty-finder.firebaseio.com",
+    "project_id": "faculty-finder",
+    "storage_bucket": "faculty-finder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526628003979:android:6f16eabb2d6ce889",
+        "android_client_info": {
+          "package_name": "com.example.facultyfinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "526628003979-20oe3ip07s06u4leeospkk6ml36l231r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgwgqq1sI2gAT4Yd4bNgIxfWyzPRCIiDY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526628003979-20oe3ip07s06u4leeospkk6ml36l231r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
