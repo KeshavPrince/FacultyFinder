@@ -15,6 +15,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -22,11 +23,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.TextView;
 
 public class Query0Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-
+    TextView navEmail;
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -36,9 +38,8 @@ public class Query0Activity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         firebaseAuth = FirebaseAuth.getInstance();
-        if(firebaseAuth.getCurrentUser()==null)
-        {
-            Intent LoginIntent= new Intent(Query0Activity.this,LoginActivity.class);
+        if(firebaseAuth.getCurrentUser()==null) {
+            Intent LoginIntent = new Intent(Query0Activity.this, LoginActivity.class);
             startActivity(LoginIntent);
             finish();
         }
@@ -49,7 +50,9 @@ public class Query0Activity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
     }
+
 
     public void signout()
     {
@@ -72,21 +75,24 @@ public class Query0Activity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+        navEmail =(TextView)findViewById(R.id.navEmail);
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        navEmail.setText(user.getEmail());
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
+        if (id == R.id.nav_profile) {
+
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_facultylist) {
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_tools) {
+        } else if (id == R.id.nav_signout) {
             signout();
+        } else if (id == R.id.nav_markabsentees) {
 
-        } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_addfaculty) {
+
+        } else if (id == R.id.nav_removefaculty) {
 
         }
 

@@ -5,33 +5,34 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_person_outline_black_24dp"
+            android:title="@string/menu_profile" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/nav_facultylist"
+            android:icon="@drawable/ic_format_list_bulleted_black_24dp"
+            android:title="@string/menu_facultylist" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
-        <item
-            android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
+            android:id="@+id/nav_signout"
+            android:icon="@drawable/ic_exit_to_app_black_24dp"
+            android:title="@string/menu_signout" />
+
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Modify">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/menu_share" />
+                android:id="@+id/nav_markabsentees"
+                android:icon="@drawable/ic_mode_edit_black_24dp"
+                android:title="@string/menu_markabsentees" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_send" />
+                android:id="@+id/nav_addfaculty"
+                android:icon="@drawable/ic_person_add_black_24dp"
+                android:title="@string/menu_addfaculty" />
+            <item
+                android:id="@+id/nav_removefaculty"
+                android:icon="@drawable/ic_delete_black_24dp"
+                android:title="@string/menu_removefaculty" />
         </menu>
     </item>
 
