@@ -31,9 +31,9 @@
         android:id="@+id/mail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tmail"
+        android:layout_below="@+id/email"
         android:layout_marginLeft="22dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="22dp"
         android:ems="10"
         android:inputType="textPersonName" />

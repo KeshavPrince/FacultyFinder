@@ -15,7 +15,6 @@
             android:name=".Query0Activity"
             android:label="@string/title_activity_query0"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".QueryActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">

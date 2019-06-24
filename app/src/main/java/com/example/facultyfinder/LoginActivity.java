@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         if(firebaseAuth.getCurrentUser()!=null)
         {
-            Intent QueryIntent= new Intent(LoginActivity.this,QueryActivity.class);
+            Intent QueryIntent= new Intent(LoginActivity.this,Query0Activity.class);
             startActivity(QueryIntent);
             finish();
         }
@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                         if(task.isSuccessful())
                         {
-                            Intent QueryIntent= new Intent(LoginActivity.this,QueryActivity.class);
+                            Intent QueryIntent= new Intent(LoginActivity.this,Query0Activity.class);
                             startActivity(QueryIntent);
                             finish();
                             //Toast.makeText(LoginActivity.this,"User Registered",Toast.LENGTH_SHORT).show();
