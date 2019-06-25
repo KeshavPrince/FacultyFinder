@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class SignupActivity extends AppCompatActivity {
 
 
-   private EditText editTextusername;
+   private EditText editTextcpassword;
    private EditText editTextpassword;
    private EditText editTextmail;
    private ProgressDialog progressDialog;
@@ -32,13 +32,13 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
          firebaseAuth = FirebaseAuth.getInstance();
          progressDialog =new ProgressDialog(this);
-         editTextusername =(EditText)findViewById(R.id.username);
+         editTextcpassword =(EditText)findViewById(R.id.cpassword);
          editTextpassword =(EditText)findViewById(R.id.password);
          editTextmail =(EditText)findViewById(R.id.mail);
     }
     public void signup(View view)
     {
-        String username = editTextusername.getText().toString().trim();
+        String cpassword = editTextcpassword.getText().toString().trim();
         String mail = editTextmail.getText().toString().trim();
         String password = editTextpassword.getText().toString().trim();
         if(TextUtils.isEmpty(mail))
@@ -46,14 +46,19 @@ public class SignupActivity extends AppCompatActivity {
             Toast.makeText(this,"Please enter Email",Toast.LENGTH_SHORT).show();
             return;
         }
-        if(TextUtils.isEmpty(username))
+        if(TextUtils.isEmpty(cpassword))
         {
-            Toast.makeText(this,"Please enter Username",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Please Confirm Password",Toast.LENGTH_SHORT).show();
             return;
         }
         if(TextUtils.isEmpty(password))
         {
             Toast.makeText(this,"Please enter Password",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(!password.equals(cpassword))
+        {
+            Toast.makeText(this,"Confirm Password is different!",Toast.LENGTH_SHORT).show();
             return;
         }
         progressDialog.setMessage("Registering User...");

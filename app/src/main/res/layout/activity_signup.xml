@@ -22,12 +22,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/title"
         android:layout_marginLeft="22dp"
-        android:layout_marginTop="11dp"
-        android:text="Username"
-        android:textSize="25sp" />
+        android:layout_marginTop="71dp"
+        android:text="E-mail"
+        android:textSize="22sp" />
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/mail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
@@ -41,14 +41,14 @@
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/username"
+        android:layout_below="@+id/mail"
         android:layout_marginLeft="22dp"
         android:layout_marginTop="13dp"
-        android:text="E-mail"
-        android:textSize="25sp" />
+        android:text="Password"
+        android:textSize="22sp" />
 
     <EditText
-        android:id="@+id/mail"
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView4"
@@ -62,14 +62,14 @@
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/mail"
+        android:layout_below="@+id/password"
         android:layout_marginLeft="22dp"
         android:layout_marginTop="22dp"
-        android:text="Password"
-        android:textSize="25sp" />
+        android:text="Confirm Password"
+        android:textSize="22sp" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/cpassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView5"
@@ -83,7 +83,7 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/password"
+        android:layout_below="@+id/cpassword"
         android:layout_marginTop="15dp"
         android:layout_centerHorizontal="true"
         android:padding="20dp"

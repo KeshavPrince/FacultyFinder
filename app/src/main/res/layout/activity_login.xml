@@ -22,10 +22,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/title"
         android:layout_marginStart="22dp"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="72dp"
         android:layout_marginBottom="22dp"
         android:text="Email"
-        android:textSize="25sp" />
+        android:textSize="22sp" />
 
     <EditText
         android:id="@+id/mail"
@@ -47,7 +47,7 @@
         android:layout_marginTop="45dp"
         android:layout_marginBottom="22dp"
         android:text="Password"
-        android:textSize="25sp" />
+        android:textSize="22sp" />
 
     <EditText
         android:id="@+id/password"
