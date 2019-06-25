@@ -71,8 +71,8 @@ public class SignupActivity extends AppCompatActivity {
                         if(task.isSuccessful())
                         {
                             Toast.makeText(SignupActivity.this,"User Registered",Toast.LENGTH_SHORT).show();
-                            Intent LoginIntent= new Intent(SignupActivity.this,LoginActivity.class);
-                            startActivity(LoginIntent);
+                            Intent profileIntent= new Intent(SignupActivity.this,ProfileFormActivity.class);
+                            startActivity(profileIntent);
                             finish();
                         }
                         else
