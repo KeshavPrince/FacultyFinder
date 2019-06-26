@@ -80,7 +80,7 @@ public class ProfileActivity extends AppCompatActivity
         Log.w("thala2","cool");
         textViewusername.setText(profileInfo.getUsername());
         textVieworganisation.setText(profileInfo.getOrganisationname());
-       // textViewphonenumber.setText(profileInfo.getPhonenumber());
+        textViewphonenumber.setText(profileInfo.getPhonenumber());
         textViewnooffaculty.setText("0");
     }
     public void signout()
