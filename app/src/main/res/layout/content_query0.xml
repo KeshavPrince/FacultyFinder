@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Query0Activity"
-    tools:showIn="@layout/app_bar_query0"/>
+    tools:showIn="@layout/app_bar_query0">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+</RelativeLayout>

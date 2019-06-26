@@ -113,6 +113,5 @@ public class ProfileFormActivity extends AppCompatActivity {
         Intent QueryIntent= new Intent(ProfileFormActivity.this,Query0Activity.class);
         startActivity(QueryIntent);
         finish();
-
     }
 }

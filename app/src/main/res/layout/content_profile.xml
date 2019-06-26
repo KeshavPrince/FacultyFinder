@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".AddFacultyActivity"
+    tools:showIn="@layout/activity_profile">
+
+
+    <TextView
+        android:id="@+id/textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        android:text="Personal Information"
+        android:textSize="33sp" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textview"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="60dp"
+        android:text="Username"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/organisation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/username"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:text="Organisation"
+        android:textSize="22dp" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/organisation"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:text="Email"
+        android:textSize="22dp" />
+
+    <TextView
+        android:id="@+id/phoneno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/email"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:text="Phone Number"
+        android:textSize="22dp" />
+
+    <TextView
+        android:id="@+id/nooffaculty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/phoneno"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="30dp"
+        android:text="Number of Faculty"
+        android:textSize="22dp" />
+</RelativeLayout>

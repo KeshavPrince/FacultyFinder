@@ -81,9 +81,14 @@ public class Query0Activity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
-
+            Intent ProfileIntent = new Intent(Query0Activity.this, ProfileActivity.class);
+            startActivity(ProfileIntent);
+            finish();
             // Handle the camera action
-        } else if (id == R.id.nav_facultylist) {
+        }else if (id == R.id.nav_home) {
+
+        }
+        else if (id == R.id.nav_facultylist) {
 
         } else if (id == R.id.nav_signout) {
             signout();
@@ -91,7 +96,9 @@ public class Query0Activity extends AppCompatActivity
 
 
         } else if (id == R.id.nav_addfaculty) {
-
+            Intent AddfacultyIntent = new Intent(Query0Activity.this, AddFacultyActivity.class);
+            startActivity(AddfacultyIntent);
+            finish();
         } else if (id == R.id.nav_removefaculty) {
 
         }
