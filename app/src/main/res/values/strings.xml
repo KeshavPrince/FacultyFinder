@@ -13,7 +13,6 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_desc">Navigation header</string>
-
     <string name="menu_profile">Profile</string>
     <string name="menu_facultylist">Faculty List</string>
     <string name="menu_signout">SignOut</string>

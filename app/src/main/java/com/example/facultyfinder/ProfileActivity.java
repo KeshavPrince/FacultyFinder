@@ -32,11 +32,13 @@ public class ProfileActivity extends AppCompatActivity
     TextView textViewphonenumber;
     TextView textViewnooffaculty;
     DatabaseReference databaseReference;
-
+    FirebaseUser user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
         setfront();
         Toolbar toolbar = findViewById(R.id.toolbarprofile);
         setSupportActionBar(toolbar);
@@ -50,8 +52,6 @@ public class ProfileActivity extends AppCompatActivity
     }
     public void setfront()
     {
-        firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = firebaseAuth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid());
         textViewusername = (TextView)findViewById(R.id.username);
         textVieworganisation=(TextView)findViewById(R.id.organisation);
@@ -73,11 +73,10 @@ public class ProfileActivity extends AppCompatActivity
     }
     public void dochange(ProfileInfo profileInfo)
     {
-        firebaseAuth = FirebaseAuth.getInstance();
-        Log.w("thala1","cool");
+     //   Log.w("thala1","cool");
         FirebaseUser user = firebaseAuth.getCurrentUser();
         textViewemail.setText(user.getEmail());
-        Log.w("thala2","cool");
+       // Log.w("thala2","cool");
         textViewusername.setText(profileInfo.getUsername());
         textVieworganisation.setText(profileInfo.getOrganisationname());
         textViewphonenumber.setText(profileInfo.getPhonenumber());
