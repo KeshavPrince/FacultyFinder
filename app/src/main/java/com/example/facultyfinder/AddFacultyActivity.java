@@ -1,5 +1,6 @@
 package com.example.facultyfinder;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,13 @@ import android.widget.TextView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 import static java.security.AccessController.getContext;
 
@@ -28,14 +36,34 @@ public class AddFacultyActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
     FirebaseAuth firebaseAuth;
+    DatabaseReference databaseReference;
+    FirebaseUser user;
+    ProfileInfo profileInfo;
     public String m_Text;
     TextView textView;
+    Integer nooflec;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_faculty);
         textView=(TextView)findViewById(R.id.textView8);
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid());
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                profileInfo=dataSnapshot.getValue(ProfileInfo.class);
+                Log.w("thala","dude");
+                nooflec = profileInfo.nooflectures;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         Toolbar toolbar = findViewById(R.id.toolbaraddfaculty);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layoutaddfaculty);
@@ -46,31 +74,76 @@ public class AddFacultyActivity extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
     }
-    public void goo(View view)
+    ArrayList<String> cur=new ArrayList<String>();
+    public void dialogbox(final String day, final Integer curlec) {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            final Integer h=curlec+1;
+            if(h>=nooflec+1)
+                return;
+            builder.setTitle(day+ ": Period " + Integer.toString(h));
+            View viewInflated = LayoutInflater.from(this).inflate(R.layout.dialog, (ViewGroup) findViewById(android.R.id.content), false);
+            final EditText input = (EditText) viewInflated.findViewById(R.id.editTexti);
+            builder.setView(viewInflated);
+            builder.setPositiveButton("NEXT", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                    m_Text = input.getText().toString();
+                    cur.add(m_Text);
+                    dialogbox(day,h);
+                }
+            });
+            builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            builder.show();
+    }
+
+    //days
+
+    public void amonday(View view)
     {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        String ss="kp";
-        builder.setTitle("Title"+ss);
-        View viewInflated = LayoutInflater.from(this).inflate(R.layout.dialog, (ViewGroup) findViewById(android.R.id.content), false);
-        final EditText input = (EditText) viewInflated.findViewById(R.id.editTexti);
-        builder.setView(viewInflated);
-        builder.setPositiveButton("NEXT", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                m_Text = input.getText().toString();
-                textView.setText(m_Text);
-            }
-        });
-        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
+        if(cur.size()>0)cur.clear();
+        dialogbox("Monday", 0);
+    }
+    public void atuesday(View view)
+    {
 
-        builder.show();
+        if(cur.size()>0) cur.clear();
+        dialogbox("Tuesday",0);
+    }
+    public void awednesday(View view)
+    {
 
+        if(cur.size()>0)cur.clear();
+        dialogbox("Wednesday",0);
+    }
+    public void athursday(View view)
+    {
+
+        if(cur.size()>0)cur.clear();
+        dialogbox("Thursday",0);
+    }
+    public void afriday(View view)
+    {
+
+        if(cur.size()>0)cur.clear();
+        dialogbox("Friday",0);
+    }
+    public void asaturday(View view)
+    {
+
+        if(cur.size()>0) cur.clear();
+        dialogbox("Saturday",0);
+    }
+
+    public void uploaddata(View view)
+    {
+        Log.w("thala",Integer.toString(cur.size()));
     }
 
     public void signout()
