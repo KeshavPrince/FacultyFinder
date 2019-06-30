@@ -6,8 +6,11 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
@@ -16,6 +19,11 @@ import android.view.MenuItem;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -23,14 +31,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class Query0Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     TextView navEmail;
-    private FirebaseAuth firebaseAuth;
-
+    FirebaseAuth firebaseAuth;
+    EditText editTextqueryfacultyname;
+    EditText editTextspecifytime;
+    Integer click;
+    RadioGroup radioGroup;
+    RadioButton radioButtoncur,radioButtonspec;
+    FacultyInfo facultyInfo;
+    FirebaseUser user;
+    DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +60,8 @@ public class Query0Activity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid()).child("Faculty");
         if(firebaseAuth.getCurrentUser()==null) {
             Intent LoginIntent = new Intent(Query0Activity.this, LoginActivity.class);
             startActivity(LoginIntent);
@@ -49,10 +73,15 @@ public class Query0Activity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        click=-1;
         navigationView.setNavigationItemSelectedListener(this);
-
+        editTextqueryfacultyname=(EditText)findViewById(R.id.queryfacultyname);
+        editTextspecifytime=(EditText)findViewById(R.id.queryspecfictime);
+        radioGroup=(RadioGroup)findViewById(R.id.radiotime);
+        radioButtoncur=(RadioButton)findViewById((R.id.radioButton2));
+        radioButtonspec=(RadioButton)findViewById((R.id.radioButton));
+        editTextspecifytime.setVisibility(View.INVISIBLE);
     }
-
 
     public void signout()
     {
@@ -71,6 +100,93 @@ public class Query0Activity extends AppCompatActivity
             super.onBackPressed();
         }
     }
+
+
+    public void currenttime(View view)
+    {
+        int radioid=radioGroup.getCheckedRadioButtonId();
+        radioButtoncur=findViewById(radioid);
+        click=1;
+        editTextspecifytime.setVisibility(View.INVISIBLE);
+    }
+
+    public void specifytime(View view)
+    {
+        int radioid=radioGroup.getCheckedRadioButtonId();
+        radioButtonspec=findViewById(radioid);
+        click=2;
+        editTextspecifytime.setVisibility(View.VISIBLE);
+    }
+
+    public void search(View view)
+    {
+        String queryfacultyname=editTextqueryfacultyname.getText().toString().trim();
+        if(TextUtils.isEmpty(queryfacultyname))
+        {
+            Toast.makeText(this,"Please enter Faculty name",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(click==-1)
+        {
+            Toast.makeText(this,"Please choose from Time options",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Integer dow ,querytime;
+        Calendar c =Calendar.getInstance();
+        if(click==1)
+        {
+            SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+            String time =format.format(c.getTime());
+            dow =c.get(Calendar.DAY_OF_WEEK);
+            String s1=time.substring(0,time.indexOf(":"));
+            String s2=time.substring(time.indexOf(":")+1);
+            String s3=s2.substring(0,time.indexOf(":"));
+            Integer a=Integer.valueOf(s1);
+            Integer b=Integer.valueOf(s3);
+            querytime=(a*100)+b;}
+        else
+        {
+            dow =c.get(Calendar.DAY_OF_WEEK);
+            String time= editTextspecifytime.getText().toString();
+            String s1=time.substring(0,time.indexOf(":"));
+            String s2=time.substring(time.indexOf(":")+1);
+            String s3=s2.substring(0,time.indexOf(":"));
+            Integer a=Integer.valueOf(s1);
+            Integer b=Integer.valueOf(s3);
+            querytime=(a*100)+b;
+        }
+        Log.w("thala as Always",Integer.toString(querytime));
+        Log.w("thala as Always",Integer.toString(dow));
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot x:dataSnapshot.getChildren())
+                {
+                    FacultyInfo f=x.getValue(FacultyInfo.class);
+                    Log.w(f.facultyname,f.facultyphoneno);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override

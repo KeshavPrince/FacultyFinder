@@ -8,9 +8,96 @@
     tools:context=".Query0Activity"
     tools:showIn="@layout/app_bar_query0">
 
-    <Button
-        android:id="@+id/button"
+    <TextView
+        android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="60dp"
+        android:text="Faculty Name"
+        android:textSize="22dp"
+        android:textStyle="bold" />
+
+    <AutoCompleteTextView
+        android:id="@+id/queryfacultyname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView7"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/queryfacultyname"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Time :"
+        android:textSize="22dp"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/radiotime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView10"
+        android:layout_marginTop="0dp">
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/radiotime"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:onClick="currenttime"
+            android:text="Current Time"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            style="@android:style/Widget.Holo.CompoundButton.RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:onClick="specifytime"
+            android:text="Specify Time"
+            android:textSize="23dp"
+            android:textStyle="italic" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/queryspecfictime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radiotime"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:ems="10"
+        android:hint="Enter Time (24 hr format)"
+        android:inputType="textPersonName"
+        tools:visibility="invisible" />
+
+    <Button
+        android:id="@+id/searchfaculty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/queryspecfictime"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:onClick="search"
+        android:paddingLeft="30dp"
+        android:paddingTop="20dp"
+        android:paddingRight="30dp"
+        android:paddingBottom="20dp"
+        android:text="search"
+        android:textSize="16sp" />
+
 </RelativeLayout>
