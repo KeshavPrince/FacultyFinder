@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,7 +53,6 @@ public class AddFacultyActivity extends AppCompatActivity
     ArrayList<String> thur=new ArrayList<>();
     ArrayList<String> fri=new ArrayList<>();
     ArrayList<String> sat=new ArrayList<>();
-
 
     TextView textView;
     Integer nooflec;
@@ -95,28 +95,45 @@ public class AddFacultyActivity extends AppCompatActivity
     {
         if(day.equals("Monday"))
         {
-            mon=cur;
-            Log.w("thala",mon.get(0));
+            for(String s:cur)
+            {
+                mon.add(s);
+            }
         }
         else if(day.equals("Tuesday"))
         {
-            tues=cur;
+            for(String s:cur)
+            {
+                tues.add(s);
+            }
         }
         else if(day.equals("Wednesday"))
         {
-            wed=cur;
+            for(String s:cur)
+            {
+                wed.add(s);
+            }
         }
         else if(day.equals("Thursday"))
         {
-            thur=cur;
+            for(String s:cur)
+            {
+                thur.add(s);
+            }
         }
         else if(day.equals("Friday"))
         {
-           fri=cur;
+            for(String s:cur)
+            {
+                fri.add(s);
+            }
         }
         else if(day.equals("Saturday"))
         {
-            sat=cur;
+            for(String s:cur)
+            {
+                sat.add(s);
+            }
         }
     }
 
@@ -159,7 +176,7 @@ public class AddFacultyActivity extends AppCompatActivity
 
     public void amonday(View view)
     {
-        dialogbox("Monday", 0);
+        dialogbox("Monday",0);
     }
     public void atuesday(View view)
     {
@@ -196,7 +213,7 @@ public class AddFacultyActivity extends AppCompatActivity
             toastfun("Phone number can't be empty");
             return;
         }
-        if(cur.size()==0)
+        if(mon.size()==0)
         {
             toastfun("Enter faculty's schedule for Monday");
             return;
