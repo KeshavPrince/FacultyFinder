@@ -52,7 +52,7 @@ public class ProfileActivity extends AppCompatActivity
     {
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
-        databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid());
+        databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid()).child("Profile");
         textViewusername = (TextView)findViewById(R.id.username);
         textVieworganisation=(TextView)findViewById(R.id.organisation);
         textViewemail=(TextView)findViewById(R.id.email);

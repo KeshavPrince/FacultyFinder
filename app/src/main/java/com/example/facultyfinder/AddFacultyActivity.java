@@ -11,6 +11,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,8 +40,20 @@ public class AddFacultyActivity extends AppCompatActivity
     FirebaseAuth firebaseAuth;
     DatabaseReference databaseReference;
     FirebaseUser user;
+    EditText editTextfacultyname;
+    EditText editTextfacultyphoneno;
+    FacultyInfo facultyInfo;
     ProfileInfo profileInfo;
     public String m_Text;
+    ArrayList<String> cur=new ArrayList<String>();
+    ArrayList<String> mon=new ArrayList<>();
+    ArrayList<String> tues=new ArrayList<>();
+    ArrayList<String> wed=new ArrayList<>();
+    ArrayList<String> thur=new ArrayList<>();
+    ArrayList<String> fri=new ArrayList<>();
+    ArrayList<String> sat=new ArrayList<>();
+
+
     TextView textView;
     Integer nooflec;
     @Override
@@ -50,7 +64,9 @@ public class AddFacultyActivity extends AppCompatActivity
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
-        databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid());
+        editTextfacultyname=(EditText)findViewById(R.id.addname);
+        editTextfacultyphoneno=(EditText)findViewById(R.id.addphoneno);
+        databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid()).child("Profile");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -74,13 +90,45 @@ public class AddFacultyActivity extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
     }
-    ArrayList<String> cur=new ArrayList<String>();
+
+    public void updateday(String day)
+    {
+        if(day.equals("Monday"))
+        {
+            mon=cur;
+            Log.w("thala",mon.get(0));
+        }
+        else if(day.equals("Tuesday"))
+        {
+            tues=cur;
+        }
+        else if(day.equals("Wednesday"))
+        {
+            wed=cur;
+        }
+        else if(day.equals("Thursday"))
+        {
+            thur=cur;
+        }
+        else if(day.equals("Friday"))
+        {
+           fri=cur;
+        }
+        else if(day.equals("Saturday"))
+        {
+            sat=cur;
+        }
+    }
+
     public void dialogbox(final String day, final Integer curlec) {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             final Integer h=curlec+1;
-            if(h>=nooflec+1)
+            if(h>=nooflec+1) {
+                updateday(day);
+                cur.clear();
                 return;
+            }
             builder.setTitle(day+ ": Period " + Integer.toString(h));
             View viewInflated = LayoutInflater.from(this).inflate(R.layout.dialog, (ViewGroup) findViewById(android.R.id.content), false);
             final EditText input = (EditText) viewInflated.findViewById(R.id.editTexti);
@@ -104,46 +152,84 @@ public class AddFacultyActivity extends AppCompatActivity
     }
 
     //days
+    public void toastfun(String msg)
+    {
+        Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
+    }
 
     public void amonday(View view)
     {
-        if(cur.size()>0)cur.clear();
         dialogbox("Monday", 0);
     }
     public void atuesday(View view)
     {
-
-        if(cur.size()>0) cur.clear();
         dialogbox("Tuesday",0);
     }
     public void awednesday(View view)
     {
-
-        if(cur.size()>0)cur.clear();
         dialogbox("Wednesday",0);
     }
     public void athursday(View view)
     {
-
-        if(cur.size()>0)cur.clear();
         dialogbox("Thursday",0);
     }
     public void afriday(View view)
     {
-
-        if(cur.size()>0)cur.clear();
         dialogbox("Friday",0);
     }
     public void asaturday(View view)
     {
-
-        if(cur.size()>0) cur.clear();
         dialogbox("Saturday",0);
     }
 
     public void uploaddata(View view)
     {
-        Log.w("thala",Integer.toString(cur.size()));
+        String Facultyname=editTextfacultyname.getText().toString().trim();
+        if(TextUtils.isEmpty(Facultyname))
+        {
+            toastfun("Faculty Name can't be empty");
+            return;
+        }
+        String FacultyPhoneno=editTextfacultyphoneno.getText().toString().trim();
+        if(TextUtils.isEmpty(FacultyPhoneno))
+        {
+            toastfun("Phone number can't be empty");
+            return;
+        }
+        if(cur.size()==0)
+        {
+            toastfun("Enter faculty's schedule for Monday");
+            return;
+        }
+        if(tues.size()==0)
+        {
+            toastfun("Enter faculty's schedule for Tuesday");
+            return;
+        }
+        if(wed.size()==0)
+        {
+            toastfun("Enter faculty's schedule for Wednesday");
+            return;
+        }
+        if(thur.size()==0)
+        {
+            toastfun("Enter faculty's schedule for Thurday");
+            return;
+        }
+        if(fri.size()==0)
+        {
+            toastfun("Enter faculty's schedule for Friday");
+            return;
+        }
+        if(sat.size()==0)
+        {
+            toastfun("Enter faculty's schedule for Saturday");
+            return;
+        }
+        facultyInfo=new FacultyInfo(Facultyname,FacultyPhoneno,mon,tues,wed,thur,fri,sat);
+        databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid()).child("Faculty").child(Facultyname);
+        databaseReference.setValue(facultyInfo);
+        toastfun("Faculty Created!");
     }
 
     public void signout()

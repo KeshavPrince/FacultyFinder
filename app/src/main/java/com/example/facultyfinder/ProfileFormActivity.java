@@ -108,7 +108,7 @@ public class ProfileFormActivity extends AppCompatActivity {
         Integer startingtime = totimee(startingtimestr);
         ProfileInfo profileInfo = new ProfileInfo(username,phonenostr,organisationname,nooflectures,duration,startingtime);
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        databaseReference.child(user.getUid()).setValue(profileInfo);
+        databaseReference.child(user.getUid()).child("Profile").setValue(profileInfo);
         toastfun("Data Register Successfully");
         Intent QueryIntent= new Intent(ProfileFormActivity.this,Query0Activity.class);
         startActivity(QueryIntent);
