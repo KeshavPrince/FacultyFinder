@@ -52,15 +52,29 @@ public class Query0Activity extends AppCompatActivity
     RadioButton radioButtoncur,radioButtonspec;
     FacultyInfo facultyInfo;
     FirebaseUser user;
+    ProfileInfo profileInfo;
+    Integer dow ,querytime;
     DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_query0);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid()).child("Profile");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                profileInfo=dataSnapshot.getValue(ProfileInfo.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        setSupportActionBar(toolbar);
         databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid()).child("Faculty");
         if(firebaseAuth.getCurrentUser()==null) {
             Intent LoginIntent = new Intent(Query0Activity.this, LoginActivity.class);
@@ -120,7 +134,7 @@ public class Query0Activity extends AppCompatActivity
 
     public void search(View view)
     {
-        String queryfacultyname=editTextqueryfacultyname.getText().toString().trim();
+        final String queryfacultyname=editTextqueryfacultyname.getText().toString().trim();
         if(TextUtils.isEmpty(queryfacultyname))
         {
             Toast.makeText(this,"Please enter Faculty name",Toast.LENGTH_SHORT).show();
@@ -131,7 +145,6 @@ public class Query0Activity extends AppCompatActivity
             Toast.makeText(this,"Please choose from Time options",Toast.LENGTH_SHORT).show();
             return;
         }
-        Integer dow ,querytime;
         Calendar c =Calendar.getInstance();
         if(click==1)
         {
@@ -162,8 +175,13 @@ public class Query0Activity extends AppCompatActivity
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot x:dataSnapshot.getChildren())
                 {
-                    FacultyInfo f=x.getValue(FacultyInfo.class);
-                    Log.w(f.facultyname,f.facultyphoneno);
+                    facultyInfo=x.getValue(FacultyInfo.class);
+                    if(queryfacultyname.equals(facultyInfo.facultyname))
+                    {
+                        Log.w("thala","wolf");
+                        solve();
+                        break;
+                    }
                 }
             }
 
@@ -172,9 +190,60 @@ public class Query0Activity extends AppCompatActivity
 
             }
         });
+
+
     }
 
-
+    public void solve()
+    {
+        Integer st=profileInfo.startingtime;
+        Integer nol=profileInfo.nooflectures;
+        Integer dur=profileInfo.duration;
+        Integer cur=1;
+        Integer a=st,b=st+dur;
+        while(cur<=nol)
+        {
+            if(querytime>=a && querytime<b)
+            {
+                break;
+            }
+            cur++;
+            a+=dur;
+            b+=dur;
+        }
+        if(cur>nol)
+        {
+            Toast.makeText(this,"Working work is over or not started yet",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String ans="Hoilday";
+        cur--;
+        if(dow==2)
+        {
+            ans=facultyInfo.monday.get(cur);
+        }
+        if(dow==3)
+        {
+            ans=facultyInfo.tuesday.get(cur);
+        }
+        if(dow==4)
+        {
+            ans=facultyInfo.wednesday.get(cur);
+        }
+        if(dow==5)
+        {
+            ans=facultyInfo.thursday.get(cur);
+        }
+        if(dow==6)
+        {
+            ans=facultyInfo.friday.get(cur);
+        }
+        if(dow==7)
+        {
+            ans=facultyInfo.saturday.get(cur);
+        }
+        Log.w("wolfthala",ans);
+    }
 
 
 
