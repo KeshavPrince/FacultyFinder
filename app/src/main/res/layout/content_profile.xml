@@ -50,7 +50,7 @@
         android:textSize="22dp" />
 
     <TextView
-        android:id="@+id/phoneno"
+        android:id="@+id/faculty_phoneno"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/email"
@@ -63,7 +63,7 @@
         android:id="@+id/nooffaculty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/phoneno"
+        android:layout_below="@+id/faculty_phoneno"
         android:layout_marginLeft="22dp"
         android:layout_marginTop="30dp"
         android:text="Number of Faculty"

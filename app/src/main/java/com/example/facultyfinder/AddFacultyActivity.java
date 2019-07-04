@@ -277,7 +277,9 @@ public class AddFacultyActivity extends AppCompatActivity
             finish();
             // Handle the camera action
         } else if (id == R.id.nav_facultylist) {
-
+            Intent LoginIntent= new Intent(AddFacultyActivity.this,Faculty_list.class);
+            startActivity(LoginIntent);
+            finish();
         }else if (id == R.id.nav_home) {
             Intent QueryIntent= new Intent(AddFacultyActivity.this,Query0Activity.class);
             startActivity(QueryIntent);

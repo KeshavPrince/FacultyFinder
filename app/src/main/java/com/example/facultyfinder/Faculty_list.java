@@ -7,12 +7,18 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.material.internal.NavigationMenuItemView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -22,47 +28,54 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class ProfileActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener{
+import java.util.ArrayList;
+import java.util.List;
+
+public class Faculty_list extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     FirebaseAuth firebaseAuth;
-    TextView textViewusername;
-    TextView textVieworganisation;
-    TextView textViewemail;
-    TextView textViewphonenumber;
-    TextView textViewnooffaculty;
     DatabaseReference databaseReference;
     FirebaseUser user;
+    ListView flistView;
+    List<FacultyInfo> faculty_list;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
-        setfront();
-        Toolbar toolbar = findViewById(R.id.toolbarprofile);
+        setContentView(R.layout.activity_faculty_list);
+        flistView=(ListView)findViewById(R.id.facultylistview);
+        faculty_list=new ArrayList<>();
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid()).child("Faculty");
+        Toolbar toolbar = findViewById(R.id.toolbarfacultylist);
         setSupportActionBar(toolbar);
-        DrawerLayout drawer = findViewById(R.id.drawer_layoutprofile);
-        NavigationView navigationView = findViewById(R.id.nav_viewprofile);
+        DrawerLayout drawer = findViewById(R.id.drawer_layoutfacultylist);
+        NavigationView navigationView = findViewById(R.id.nav_viewfacultylist);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        Log.w("thala","viswasam");
     }
-    public void setfront()
-    {
-        firebaseAuth = FirebaseAuth.getInstance();
-        user = firebaseAuth.getCurrentUser();
-        databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid()).child("Profile");
-        textViewusername = (TextView)findViewById(R.id.username);
-        textVieworganisation=(TextView)findViewById(R.id.organisation);
-        textViewemail=(TextView)findViewById(R.id.email);
-        textViewphonenumber=(TextView)findViewById(R.id.faculty_phoneno);
-        textViewnooffaculty=(TextView)findViewById(R.id.nooffaculty);
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        databaseReference.addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ProfileInfo profileInfo=dataSnapshot.getValue(ProfileInfo.class);
-                dochange(profileInfo);
+                faculty_list.clear();
+                for(DataSnapshot faculty:dataSnapshot.getChildren())
+                {
+                    FacultyInfo f=faculty.getValue(FacultyInfo.class);
+                    faculty_list.add(f);
+                }
+                facultylistview adapter= new facultylistview(Faculty_list.this,faculty_list);
+                flistView.setAdapter(adapter);
             }
 
             @Override
@@ -71,32 +84,22 @@ public class ProfileActivity extends AppCompatActivity
             }
         });
     }
-    public void dochange(ProfileInfo profileInfo)
-    {
-       Log.w("thala1","cool");
-        textViewemail.setText(user.getEmail());
-        Log.w("thala2",profileInfo.getPhonenumber());
-        textViewusername.setText(profileInfo.getUsername());
-        textVieworganisation.setText(profileInfo.getOrganisationname());
-        textViewphonenumber.setText(profileInfo.getPhonenumber());
-        textViewnooffaculty.setText("0");
-    }
-    public void signout()
-    {
-        firebaseAuth.signOut();
-        Intent LoginIntent= new Intent(ProfileActivity.this,LoginActivity.class);
-        startActivity(LoginIntent);
-        finish();
-    }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layoutprofile);
+        DrawerLayout drawer = findViewById(R.id.drawer_layoutfacultylist);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
+    }
+    public void signout()
+    {
+        firebaseAuth.signOut();
+        Intent LoginIntent= new Intent(Faculty_list.this,LoginActivity.class);
+        startActivity(LoginIntent);
+        finish();
     }
 
     @Override
@@ -104,15 +107,14 @@ public class ProfileActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
-
-            // Handle the camera action
-        } else if (id == R.id.nav_facultylist) {
-            Intent LoginIntent= new Intent(ProfileActivity.this,Faculty_list.class);
-            startActivity(LoginIntent);
+            Intent QueryIntent= new Intent(Faculty_list.this,ProfileActivity.class);
+            startActivity(QueryIntent);
             finish();
 
+        } else if (id == R.id.nav_facultylist) {
+
         }else if (id == R.id.nav_home) {
-            Intent QueryIntent= new Intent(ProfileActivity.this,Query0Activity.class);
+            Intent QueryIntent= new Intent(Faculty_list.this,Query0Activity.class);
             startActivity(QueryIntent);
             finish();
         }
@@ -121,7 +123,7 @@ public class ProfileActivity extends AppCompatActivity
         } else if (id == R.id.nav_markabsentees) {
 
         } else if (id == R.id.nav_addfaculty) {
-            Intent QueryIntent= new Intent(ProfileActivity.this,AddFacultyActivity.class);
+            Intent QueryIntent= new Intent(Faculty_list.this,AddFacultyActivity.class);
             startActivity(QueryIntent);
             finish();
 

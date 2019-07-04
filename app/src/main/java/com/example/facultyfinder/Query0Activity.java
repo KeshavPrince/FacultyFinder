@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
@@ -242,20 +243,17 @@ public class Query0Activity extends AppCompatActivity
         {
             ans=facultyInfo.saturday.get(cur);
         }
-        Log.w("wolfthala",ans);
+        showMessage("Phone Number",facultyInfo.getFacultyphoneno());
+        showMessage("Faculty is Expected to be at",ans);
     }
-
-
-
-
-
-
-
-
-
-
-
-
+    public  void showMessage(String title,String message)
+    {
+        AlertDialog.Builder builder =new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.show();
+    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -274,7 +272,9 @@ public class Query0Activity extends AppCompatActivity
 
         }
         else if (id == R.id.nav_facultylist) {
-
+            Intent ProfileIntent = new Intent(Query0Activity.this, Faculty_list.class);
+            startActivity(ProfileIntent);
+            finish();
         } else if (id == R.id.nav_signout) {
             signout();
         } else if (id == R.id.nav_markabsentees) {
