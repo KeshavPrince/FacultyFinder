@@ -285,7 +285,9 @@ public class Query0Activity extends AppCompatActivity
             startActivity(AddfacultyIntent);
             finish();
         } else if (id == R.id.nav_removefaculty) {
-
+            Intent RemoveIntent = new Intent(Query0Activity.this, Removefaculty_Activity.class);
+            startActivity(RemoveIntent);
+            finish();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

@@ -126,7 +126,9 @@ public class ProfileActivity extends AppCompatActivity
             finish();
 
         } else if (id == R.id.nav_removefaculty) {
-
+            Intent RemoveIntent = new Intent(ProfileActivity.this, Removefaculty_Activity.class);
+            startActivity(RemoveIntent);
+            finish();
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layoutprofile);
         drawer.closeDrawer(GravityCompat.START);
