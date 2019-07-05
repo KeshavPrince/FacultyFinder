@@ -272,12 +272,12 @@ public class AddFacultyActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
-            Intent ProfileIntent = new Intent(AddFacultyActivity.this, ProfileActivity.class);
-            startActivity(ProfileIntent);
+            Intent profileIntent = new Intent(AddFacultyActivity.this, ProfileActivity.class);
+            startActivity(profileIntent);
             finish();
             // Handle the camera action
         } else if (id == R.id.nav_facultylist) {
-            Intent LoginIntent= new Intent(AddFacultyActivity.this,Faculty_list.class);
+            Intent LoginIntent= new Intent(AddFacultyActivity.this,AddFacultyActivity.class);
             startActivity(LoginIntent);
             finish();
         }else if (id == R.id.nav_home) {

@@ -107,8 +107,8 @@ public class Faculty_list extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
-            Intent QueryIntent= new Intent(Faculty_list.this,ProfileActivity.class);
-            startActivity(QueryIntent);
+            Intent ProIntent= new Intent(Faculty_list.this,ProfileActivity.class);
+            startActivity(ProIntent);
             finish();
 
         } else if (id == R.id.nav_facultylist) {
@@ -123,14 +123,14 @@ public class Faculty_list extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_markabsentees) {
 
         } else if (id == R.id.nav_addfaculty) {
-            Intent QueryIntent= new Intent(Faculty_list.this,AddFacultyActivity.class);
-            startActivity(QueryIntent);
+            Intent addfacIntent= new Intent(Faculty_list.this,AddFacultyActivity.class);
+            startActivity(addfacIntent);
             finish();
 
         } else if (id == R.id.nav_removefaculty) {
 
         }
-        DrawerLayout drawer = findViewById(R.id.drawer_layoutprofile);
+        DrawerLayout drawer = findViewById(R.id.drawer_layoutfacultylist);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
