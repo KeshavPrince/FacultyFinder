@@ -19,4 +19,6 @@
     <string name="menu_addfaculty">Add Faculty</string>
     <string name="menu_markabsentees">Mark Absentees</string>
     <string name="menu_removefaculty">Remove Faculty</string>
+    <string name="mark_absentees">mark_absentees</string>
+
 </resources>

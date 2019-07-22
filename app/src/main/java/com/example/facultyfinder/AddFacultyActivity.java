@@ -8,8 +8,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -246,7 +248,13 @@ public class AddFacultyActivity extends AppCompatActivity
         facultyInfo=new FacultyInfo(Facultyname,FacultyPhoneno,mon,tues,wed,thur,fri,sat);
         databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid()).child("Faculty").child(Facultyname);
         databaseReference.setValue(facultyInfo);
+        SharedPreferences sharedPref = this.getSharedPreferences(
+                getString(R.string.mark_absentees), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt(Facultyname,1);
+        editor.commit();
         toastfun("Faculty Created!");
+
     }
 
     public void signout()
@@ -277,7 +285,7 @@ public class AddFacultyActivity extends AppCompatActivity
             finish();
             // Handle the camera action
         } else if (id == R.id.nav_facultylist) {
-            Intent LoginIntent= new Intent(AddFacultyActivity.this,AddFacultyActivity.class);
+            Intent LoginIntent= new Intent(AddFacultyActivity.this,Faculty_list.class);
             startActivity(LoginIntent);
             finish();
         }else if (id == R.id.nav_home) {
@@ -288,11 +296,16 @@ public class AddFacultyActivity extends AppCompatActivity
         else if (id == R.id.nav_signout) {
             signout();
         } else if (id == R.id.nav_markabsentees) {
+            Intent markabsentIntent= new Intent(AddFacultyActivity.this,mark_absentees.class);
+            startActivity(markabsentIntent);
+            finish();
 
         } else if (id == R.id.nav_addfaculty) {
 
         } else if (id == R.id.nav_removefaculty) {
-
+            Intent RemoveIntent = new Intent(AddFacultyActivity.this, Removefaculty_Activity.class);
+            startActivity(RemoveIntent);
+            finish();
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layoutaddfaculty);
         drawer.closeDrawer(GravityCompat.START);

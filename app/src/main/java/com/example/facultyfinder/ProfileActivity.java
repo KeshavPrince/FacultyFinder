@@ -119,7 +119,9 @@ public class ProfileActivity extends AppCompatActivity
         else if (id == R.id.nav_signout) {
             signout();
         } else if (id == R.id.nav_markabsentees) {
-
+            Intent markabsentIntent= new Intent(ProfileActivity.this,mark_absentees.class);
+            startActivity(markabsentIntent);
+            finish();
         } else if (id == R.id.nav_addfaculty) {
             Intent QueryIntent= new Intent(ProfileActivity.this,AddFacultyActivity.class);
             startActivity(QueryIntent);

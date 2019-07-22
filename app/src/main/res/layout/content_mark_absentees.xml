@@ -15,7 +15,7 @@
         android:textStyle="bold|italic" />
 
     <EditText
-        android:id="@+id/facultyname"
+        android:id="@+id/facultynameabsent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView11"
@@ -31,9 +31,20 @@
         android:id="@+id/delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/facultyname"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/facultynameabsent"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="25dp"
+        android:layout_toEndOf="@+id/reset"
         android:onClick="markabsentees"
         android:text="mark absent" />
+
+    <Button
+        android:id="@+id/reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/facultynameabsent"
+        android:layout_marginLeft="90dp"
+        android:onClick="resetattendence"
+        android:layout_marginTop="25dp"
+        android:text="RESET" />
 </RelativeLayout>

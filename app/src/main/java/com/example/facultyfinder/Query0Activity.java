@@ -1,6 +1,8 @@
 package com.example.facultyfinder;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -243,8 +245,19 @@ public class Query0Activity extends AppCompatActivity
         {
             ans=facultyInfo.saturday.get(cur);
         }
-        showMessage("Phone Number",facultyInfo.getFacultyphoneno());
-        showMessage("Faculty is Expected to be at",ans);
+        SharedPreferences sharedPref = this.getSharedPreferences(
+                getString(R.string.mark_absentees), Context.MODE_PRIVATE);
+        int defaultval=0;
+        int chk = sharedPref.getInt(facultyInfo.facultyname, defaultval);
+        if(chk==1) {
+            showMessage("Phone Number", facultyInfo.getFacultyphoneno());
+            showMessage("Faculty is Expected to be at", ans);
+        }
+        else
+        {
+            showMessage("Phone Number", facultyInfo.getFacultyphoneno());
+            showMessage("Faculty is ", "Absent");
+        }
     }
     public  void showMessage(String title,String message)
     {
@@ -267,7 +280,6 @@ public class Query0Activity extends AppCompatActivity
             Intent ProfileIntent = new Intent(Query0Activity.this, ProfileActivity.class);
             startActivity(ProfileIntent);
             finish();
-            // Handle the camera action
         }else if (id == R.id.nav_home) {
 
         }
@@ -278,7 +290,9 @@ public class Query0Activity extends AppCompatActivity
         } else if (id == R.id.nav_signout) {
             signout();
         } else if (id == R.id.nav_markabsentees) {
-
+            Intent markabsentIntent= new Intent(Query0Activity.this,mark_absentees.class);
+            startActivity(markabsentIntent);
+            finish();
 
         } else if (id == R.id.nav_addfaculty) {
             Intent AddfacultyIntent = new Intent(Query0Activity.this, AddFacultyActivity.class);

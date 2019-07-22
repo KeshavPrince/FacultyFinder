@@ -138,7 +138,9 @@ implements NavigationView.OnNavigationItemSelectedListener {
         else if (id == R.id.nav_signout) {
             signout();
         } else if (id == R.id.nav_markabsentees) {
-
+            Intent markabsentIntent= new Intent(Removefaculty_Activity.this,mark_absentees.class);
+            startActivity(markabsentIntent);
+            finish();
         } else if (id == R.id.nav_addfaculty) {
             Intent addfacIntent= new Intent(Removefaculty_Activity.this,AddFacultyActivity.class);
             startActivity(addfacIntent);

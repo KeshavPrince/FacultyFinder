@@ -120,6 +120,9 @@ public class Faculty_list extends AppCompatActivity implements NavigationView.On
         else if (id == R.id.nav_signout) {
             signout();
         } else if (id == R.id.nav_markabsentees) {
+            Intent markabsentIntent= new Intent(Faculty_list.this,mark_absentees.class);
+            startActivity(markabsentIntent);
+            finish();
 
         } else if (id == R.id.nav_addfaculty) {
             Intent addfacIntent= new Intent(Faculty_list.this,AddFacultyActivity.class);
