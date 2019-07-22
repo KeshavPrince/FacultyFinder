@@ -39,7 +39,6 @@ public class Faculty_list extends AppCompatActivity implements NavigationView.On
     ListView flistView;
     List<FacultyInfo> faculty_list;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -23,12 +23,9 @@ public class facultylistview extends ArrayAdapter<FacultyInfo> {
     public View getView(int i, View view, ViewGroup viewGroup) {
         LayoutInflater inflater=context.getLayoutInflater();
         View flistview=inflater.inflate(R.layout.facultylistitem,null);
-
         TextView facultynametext=(TextView)flistview.findViewById(R.id.faculty_name);
         TextView facultyphonetext=(TextView)flistview.findViewById(R.id.faculty_phoneno);
-
         FacultyInfo facultyInfo=flist.get(i);
-
         facultyphonetext.setText(facultyInfo.getFacultyphoneno());
         facultynametext.setText(facultyInfo.getFacultyname());
         return flistview;
