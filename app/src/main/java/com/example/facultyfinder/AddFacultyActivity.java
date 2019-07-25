@@ -12,6 +12,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -201,8 +203,25 @@ public class AddFacultyActivity extends AppCompatActivity
         dialogbox("Saturday",0);
     }
 
+    public boolean chkinternet()
+    {
+        ConnectivityManager cm =
+                (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+        return isConnected;
+    }
+
     public void uploaddata(View view)
     {
+        boolean chkinternt=chkinternet();
+        if(!chkinternt)
+        {
+            Toast.makeText(this,"No internet Connection..",Toast.LENGTH_SHORT).show();
+            return;
+        }
         String Facultyname=editTextfacultyname.getText().toString().trim();
         if(TextUtils.isEmpty(Facultyname))
         {

@@ -2,12 +2,17 @@ package com.example.facultyfinder;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -77,8 +82,24 @@ implements NavigationView.OnNavigationItemSelectedListener {
             }
         });
     }
-    public  void deletefaculty(View view)
+    public boolean chkinternet()
     {
+        ConnectivityManager cm =
+                (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+        return isConnected;
+    }
+    public void delfac()
+    {
+        boolean chkinternt=chkinternet();
+        if(!chkinternt)
+        {
+            Toast.makeText(this,"No internet Connection..",Toast.LENGTH_SHORT).show();
+            return;
+        }
         Boolean chk=false;
         String name=facultyname.getText().toString().trim();
         for(FacultyInfo f:faculty_list)
@@ -99,6 +120,23 @@ implements NavigationView.OnNavigationItemSelectedListener {
         {
             Toast.makeText(this,"No such Faculty exits",Toast.LENGTH_SHORT).show();
         }
+    }
+    public  void deletefaculty(View view)
+    {
+        String fname=facultyname.getText().toString().trim();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Are you sure you want to remove " + fname +" ?");
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                delfac();
+            }
+        });
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                return;
+            }
+        });
+        AlertDialog dialog = builder.create();
 
     }
     @Override
