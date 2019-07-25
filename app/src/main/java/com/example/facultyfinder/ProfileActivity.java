@@ -7,11 +7,17 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,12 +37,14 @@ public class ProfileActivity extends AppCompatActivity
     TextView textViewemail;
     TextView textViewphonenumber;
     TextView textViewnooffaculty;
+    ProgressDialog progressDialog;
     DatabaseReference databaseReference;
     FirebaseUser user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        progressDialog =new ProgressDialog(this);
         setfront();
         Toolbar toolbar = findViewById(R.id.toolbarprofile);
         setSupportActionBar(toolbar);
@@ -48,8 +56,26 @@ public class ProfileActivity extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
     }
+    public boolean chkinternet()
+    {
+        ConnectivityManager cm =
+                (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+        return isConnected;
+    }
     public void setfront()
     {
+        boolean chkinternt=chkinternet();
+        if(!chkinternt)
+        {
+            Toast.makeText(this,"No internet Connection..",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        progressDialog.setMessage("Registering User...");
+        progressDialog.show();
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid()).child("Profile");
@@ -80,6 +106,7 @@ public class ProfileActivity extends AppCompatActivity
         textVieworganisation.setText(profileInfo.getOrganisationname());
         textViewphonenumber.setText(profileInfo.getPhonenumber());
         textViewnooffaculty.setText("0");
+        progressDialog.dismiss();
     }
     public void signout()
     {

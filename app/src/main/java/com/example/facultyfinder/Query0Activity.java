@@ -3,6 +3,8 @@ package com.example.facultyfinder;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -97,7 +99,7 @@ public class Query0Activity extends AppCompatActivity
         radioGroup=(RadioGroup)findViewById(R.id.radiotime);
         radioButtoncur=(RadioButton)findViewById((R.id.radioButton2));
         radioButtonspec=(RadioButton)findViewById((R.id.radioButton));
-        editTextspecifytime.setVisibility(View.INVISIBLE);
+        editTextspecifytime.setVisibility(View.VISIBLE);
     }
 
     public void signout()
@@ -148,6 +150,12 @@ public class Query0Activity extends AppCompatActivity
             Toast.makeText(this,"Please choose from Time options",Toast.LENGTH_SHORT).show();
             return;
         }
+        boolean chkinternt=chkinternet();
+        if(!chkinternt)
+        {
+            Toast.makeText(this,"No internet Connection..",Toast.LENGTH_SHORT).show();
+            return;
+        }
         Calendar c =Calendar.getInstance();
         if(click==1)
         {
@@ -196,7 +204,16 @@ public class Query0Activity extends AppCompatActivity
 
 
     }
+    public boolean chkinternet()
+    {
+        ConnectivityManager cm =
+                (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
 
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+        return isConnected;
+    }
     public void solve()
     {
         Integer st=profileInfo.startingtime;
@@ -216,7 +233,7 @@ public class Query0Activity extends AppCompatActivity
         }
         if(cur>nol)
         {
-            Toast.makeText(this,"Working work is over or not started yet",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Working hour is over or not started yet",Toast.LENGTH_SHORT).show();
             return;
         }
         String ans="Hoilday";

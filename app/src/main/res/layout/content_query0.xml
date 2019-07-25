@@ -15,7 +15,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="60dp"
         android:text="Faculty Name"
-        android:textSize="22dp"
+        android:textSize="24dp"
         android:textStyle="bold" />
 
     <AutoCompleteTextView
@@ -37,7 +37,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:text="Time :"
-        android:textSize="22dp"
+        android:textSize="24dp"
         android:textStyle="bold" />
 
     <RadioGroup
@@ -56,7 +56,7 @@
             android:layout_marginTop="20dp"
             android:onClick="currenttime"
             android:text="Current Time"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:textStyle="italic" />
 
         <RadioButton
@@ -68,7 +68,7 @@
             android:layout_marginTop="20dp"
             android:onClick="specifytime"
             android:text="Specify Time"
-            android:textSize="23dp"
+            android:textSize="22dp"
             android:textStyle="italic" />
     </RadioGroup>
 

@@ -4,7 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -39,6 +42,16 @@ public class LoginActivity extends AppCompatActivity {
         editTextmail =(EditText)findViewById(R.id.mail);
     }
 
+    public boolean chkinternet()
+    {
+        ConnectivityManager cm =
+                (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+        return isConnected;
+    }
     public void login(View view)
     {
         String mail = editTextmail.getText().toString().trim();
@@ -51,6 +64,12 @@ public class LoginActivity extends AppCompatActivity {
         if(TextUtils.isEmpty(password))
         {
             Toast.makeText(this,"Please enter Password",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        boolean chkinternt=chkinternet();
+        if(!chkinternt)
+        {
+            Toast.makeText(this,"No internet Connection..",Toast.LENGTH_SHORT).show();
             return;
         }
         progressDialog.setMessage("Authenticating User...");

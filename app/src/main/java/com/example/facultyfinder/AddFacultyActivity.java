@@ -283,7 +283,6 @@ public class AddFacultyActivity extends AppCompatActivity
             Intent profileIntent = new Intent(AddFacultyActivity.this, ProfileActivity.class);
             startActivity(profileIntent);
             finish();
-            // Handle the camera action
         } else if (id == R.id.nav_facultylist) {
             Intent LoginIntent= new Intent(AddFacultyActivity.this,Faculty_list.class);
             startActivity(LoginIntent);
