@@ -26,7 +26,6 @@
         android:layout_below="@+id/textview"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="60dp"
-        android:text="Username"
         android:textSize="22sp" />
 
     <TextView
@@ -36,7 +35,6 @@
         android:layout_below="@+id/username"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
-        android:text="Organisation"
         android:textSize="22dp" />
 
     <TextView
@@ -46,7 +44,6 @@
         android:layout_below="@+id/organisation"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
-        android:text="Email"
         android:textSize="22dp" />
 
     <TextView
@@ -56,16 +53,6 @@
         android:layout_below="@+id/email"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
-        android:text="Phone Number"
         android:textSize="22dp" />
 
-    <TextView
-        android:id="@+id/nooffaculty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/faculty_phoneno"
-        android:layout_marginLeft="22dp"
-        android:layout_marginTop="30dp"
-        android:text="Number of Faculty"
-        android:textSize="22dp" />
 </RelativeLayout>

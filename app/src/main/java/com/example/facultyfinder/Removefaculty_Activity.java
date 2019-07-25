@@ -128,16 +128,18 @@ implements NavigationView.OnNavigationItemSelectedListener {
         builder.setTitle("Are you sure you want to remove " + fname +" ?");
         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
                 delfac();
             }
         });
         builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
                 return;
             }
         });
         AlertDialog dialog = builder.create();
-
+        dialog.show();
     }
     @Override
     public void onBackPressed() {

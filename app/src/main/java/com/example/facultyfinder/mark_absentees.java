@@ -122,15 +122,18 @@ public class mark_absentees extends AppCompatActivity
         builder.setTitle("Are you sure you want to mark " + fname +" Absent?");
         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
                 markabsent();
             }
         });
         builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
                 return;
             }
         });
         AlertDialog dialog = builder.create();
+        dialog.show();
     }
     public void restatt()
     {
@@ -157,15 +160,18 @@ public class mark_absentees extends AppCompatActivity
         builder.setTitle("Are you sure you want to reset " + "?");
         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
                 restatt();
             }
         });
         builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
                 return;
             }
         });
         AlertDialog dialog = builder.create();
+        dialog.show();
     }
     public boolean chkinternet()
     {

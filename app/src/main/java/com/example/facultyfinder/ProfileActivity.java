@@ -74,7 +74,7 @@ public class ProfileActivity extends AppCompatActivity
             Toast.makeText(this,"No internet Connection..",Toast.LENGTH_SHORT).show();
             return;
         }
-        progressDialog.setMessage("Registering User...");
+        progressDialog.setMessage("Fetching User Data..");
         progressDialog.show();
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
@@ -83,7 +83,6 @@ public class ProfileActivity extends AppCompatActivity
         textVieworganisation=(TextView)findViewById(R.id.organisation);
         textViewemail=(TextView)findViewById(R.id.email);
         textViewphonenumber=(TextView)findViewById(R.id.faculty_phoneno);
-        textViewnooffaculty=(TextView)findViewById(R.id.nooffaculty);
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -105,7 +104,6 @@ public class ProfileActivity extends AppCompatActivity
         textViewusername.setText(profileInfo.getUsername());
         textVieworganisation.setText(profileInfo.getOrganisationname());
         textViewphonenumber.setText(profileInfo.getPhonenumber());
-        textViewnooffaculty.setText("0");
         progressDialog.dismiss();
     }
     public void signout()
