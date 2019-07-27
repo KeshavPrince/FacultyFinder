@@ -58,13 +58,21 @@ public class LoginActivity extends AppCompatActivity {
         String password = editTextpassword.getText().toString().trim();
         if(TextUtils.isEmpty(mail))
         {
-            Toast.makeText(this,"Please enter Email",Toast.LENGTH_SHORT).show();
+            editTextmail.setError("Field can't be empty");
             return;
+        }
+        else
+        {
+            editTextmail.setError(null);
         }
         if(TextUtils.isEmpty(password))
         {
-            Toast.makeText(this,"Please enter Password",Toast.LENGTH_SHORT).show();
+            editTextmail.setError("Field can't be empty");
             return;
+        }
+        else
+        {
+            editTextmail.setError(null);
         }
         boolean chkinternt=chkinternet();
         if(!chkinternt)
