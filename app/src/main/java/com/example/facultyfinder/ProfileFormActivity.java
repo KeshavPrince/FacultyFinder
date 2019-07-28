@@ -120,36 +120,56 @@ public class ProfileFormActivity extends AppCompatActivity {
         }
         else
         {
-
+            textInputLayoutphhonenumber.setError(null);
         }
         if(phonenostr.length()!=10) {
-            toastfun("Incorrect Phone Number");
+            textInputLayoutphhonenumber.setError("Incorrect phone number");
             return;
+        }
+        else
+        {
+            textInputLayoutphhonenumber.setError(null);
         }
         String nooflecturesstr = editTextnooflectures.getText().toString().trim();
         if(TextUtils.isEmpty(nooflecturesstr))
         {
-            toastfun("Number of lectures can't be empty");
+            textInputLayoutnooflectures.setError("Field can't be empty");
             return;
+        }
+        else
+        {
+            textInputLayoutnooflectures.setError(null);
         }
         if(nooflecturesstr.equals("0") || nooflecturesstr.length()>=3)
         {
-            toastfun("Number of lectures is invaild");
+            textInputLayoutnooflectures.setError("Invalid input");
             return;
+        }
+        else
+        {
+            textInputLayoutnooflectures.setError(null);
         }
         Integer nooflectures=Integer.parseInt(nooflecturesstr);	;
         String durationstr = editTextduration.getText().toString().trim();
         if(durationstr.length()!=5)
         {
-            toastfun("Invaild Duration");
+            textInputLayoutduration.setError("Invaild input");
             return;
+        }
+        else
+        {
+            textInputLayoutduration.setError(null);
         }
         Integer duration = totimee(durationstr);
         String startingtimestr=editTextstartingtime.getText().toString().trim();
         if(startingtimestr.length()!=5)
         {
-            toastfun("Invaild Starting time");
+            textInputLayoutstartingtime.setError("Invaild input");
             return;
+        }
+        else
+        {
+            textInputLayoutduration.setError(null);
         }
         Integer startingtime = totimee(startingtimestr);
         ProfileInfo profileInfo = new ProfileInfo(username,phonenostr,organisationname,nooflectures,duration,startingtime);

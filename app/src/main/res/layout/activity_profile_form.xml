@@ -3,18 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".ProfileFormActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Input_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="22dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="50dp"
         android:layout_marginRight="22dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="2dp"
         app:boxBackgroundMode="none"
         app:errorEnabled="true"
         app:hintAnimationEnabled="false">
@@ -27,7 +35,7 @@
             android:fontFamily="sans-serif"
             android:hint="Username"
             android:inputType="textPersonName"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -37,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="22dp"
         android:layout_marginRight="22dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="2dp"
         app:boxBackgroundMode="none"
         app:errorEnabled="true"
         app:hintAnimationEnabled="false">
@@ -49,7 +57,7 @@
             android:ems="10"
             android:fontFamily="sans-serif"
             android:hint="Name of orgination"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -59,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="22dp"
         android:layout_marginRight="22dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="2dp"
         app:boxBackgroundMode="none"
         app:errorEnabled="true"
         app:hintAnimationEnabled="false">
@@ -72,7 +80,7 @@
             android:fontFamily="sans-serif"
             android:hint="Phone number"
             android:inputType="textPhonetic"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -82,7 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="22dp"
         android:layout_marginRight="22dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="2dp"
         app:boxBackgroundMode="none"
         app:errorEnabled="true"
         app:hintAnimationEnabled="false">
@@ -94,7 +102,7 @@
             android:ems="10"
             android:fontFamily="sans-serif"
             android:hint="Number of lectures (per day)"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -104,7 +112,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="22dp"
         android:layout_marginRight="22dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="2dp"
         app:boxBackgroundMode="none"
         app:errorEnabled="true"
         app:hintAnimationEnabled="false">
@@ -117,7 +125,7 @@
             android:fontFamily="sans-serif"
             android:hint="Duration of single period (hh:mm)"
             android:inputType="time"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -137,9 +145,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:fontFamily="sans-serif"
-            android:hint="Email"
+            android:hint="Starting Time(hh:mm)"
             android:inputType="time"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -148,11 +156,14 @@
         android:background="@drawable/round_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/startingtime"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginStart="50dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginTop="20dp"
+        android:textSize="18dp"
+        android:layout_marginBottom="60dp"
+        android:layout_marginStart="80dp"
         android:onClick="done"
         android:text="Done" />
+    </LinearLayout>
+    </ScrollView>
 </LinearLayout>
