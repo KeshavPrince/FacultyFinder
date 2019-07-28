@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".SignupActivity">
 
@@ -9,86 +11,90 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:fontFamily="cursive"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/alegreya_sc"
         android:text="Sign Up"
         android:textSize="50sp"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/textView2"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Inputsignup_mail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/title"
         android:layout_marginLeft="22dp"
-        android:layout_marginTop="71dp"
-        android:text="E-mail"
-        android:textSize="22sp" />
-
-    <EditText
-        android:id="@+id/mail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
-        android:layout_marginLeft="22dp"
-        android:layout_marginTop="13dp"
         android:layout_marginRight="22dp"
-        android:ems="10"
-        android:inputType="textPersonName" />
+        android:layout_marginBottom="10dp"
+        app:boxBackgroundMode="none"
+        app:errorEnabled="true"
+        app:hintAnimationEnabled="false">
 
-    <TextView
-        android:id="@+id/textView4"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/mail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="sans-serif"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textSize="22sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/mail"
+        app:errorEnabled="true"
+        android:id="@+id/Inputsignup_password"
+        android:layout_marginBottom="10dp"
+        app:passwordToggleEnabled="true"
         android:layout_marginLeft="22dp"
-        android:layout_marginTop="13dp"
-        android:text="Password"
-        android:textSize="22sp" />
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView4"
-        android:layout_marginLeft="22dp"
-        android:layout_marginTop="15dp"
         android:layout_marginRight="22dp"
-        android:ems="10"
-        android:inputType="textPassword"  />
+        >
 
-    <TextView
-        android:id="@+id/textView5"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView5"
+            android:ems="10"
+            android:fontFamily="sans-serif"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textSize="22sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/password"
+        app:errorEnabled="true"
+        android:id="@+id/Inputsignup_confirmpassword"
+        android:layout_marginBottom="20dp"
+        app:passwordToggleEnabled="true"
         android:layout_marginLeft="22dp"
-        android:layout_marginTop="22dp"
-        android:text="Confirm Password"
-        android:textSize="22sp"
-       />
-
-    <EditText
-        android:inputType="textPassword"
-        android:id="@+id/cpassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView5"
-        android:layout_marginLeft="22dp"
-        android:layout_marginTop="14dp"
         android:layout_marginRight="22dp"
-        android:ems="10"
-         />
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/confirmpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="sans-serif"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:textSize="22sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cpassword"
-        android:layout_marginTop="15dp"
-        android:layout_centerHorizontal="true"
-        android:padding="18dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/round_btn"
         android:text="SIGN UP"
         android:onClick="signup"
         android:textSize="20sp" />
@@ -98,10 +104,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/button2"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/alegreya_sc"
         android:onClick="gotoLogin"
         android:text="Already Have Account ?"
-        android:textSize="18dp" />
+        android:textSize="18dp"
+        android:textStyle="italic" />
 
-</RelativeLayout>
+</LinearLayout>

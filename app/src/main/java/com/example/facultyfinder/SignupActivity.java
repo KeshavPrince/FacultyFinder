@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -26,6 +27,9 @@ public class SignupActivity extends AppCompatActivity {
    private EditText editTextcpassword;
    private EditText editTextpassword;
    private EditText editTextmail;
+   private TextInputLayout mail;
+   private TextInputLayout password;
+   private TextInputLayout confirmpassword;
    private ProgressDialog progressDialog;
    private FirebaseAuth firebaseAuth;
 
@@ -35,9 +39,12 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
          firebaseAuth = FirebaseAuth.getInstance();
          progressDialog =new ProgressDialog(this);
-         editTextcpassword =(EditText)findViewById(R.id.cpassword);
+         editTextcpassword =(EditText)findViewById(R.id.confirmpassword);
          editTextpassword =(EditText)findViewById(R.id.password);
          editTextmail =(EditText)findViewById(R.id.mail);
+         confirmpassword=(TextInputLayout)findViewById(R.id.Inputsignup_confirmpassword);
+         password=(TextInputLayout)findViewById(R.id.Inputsignup_password);
+         mail=(TextInputLayout)findViewById(R.id.Inputsignup_mail);
     }
     public boolean chkinternet()
     {
@@ -51,28 +58,45 @@ public class SignupActivity extends AppCompatActivity {
     }
     public void signup(View view)
     {
-        String cpassword = editTextcpassword.getText().toString().trim();
-        String mail = editTextmail.getText().toString().trim();
-        String password = editTextpassword.getText().toString().trim();
-        if(TextUtils.isEmpty(mail))
+        String scpassword = editTextcpassword.getText().toString().trim();
+        String smail = editTextmail.getText().toString().trim();
+        String spassword = editTextpassword.getText().toString().trim();
+        if(TextUtils.isEmpty(smail))
         {
-            Toast.makeText(this,"Please enter Email",Toast.LENGTH_SHORT).show();
+            mail.setError("Field can't be empty");
             return;
         }
-        if(TextUtils.isEmpty(cpassword))
+        else
         {
-            Toast.makeText(this,"Please Confirm Password",Toast.LENGTH_SHORT).show();
+            mail.setError(null);
+        }
+        if(TextUtils.isEmpty(scpassword))
+        {
+            confirmpassword.setError("Field can't be empty");
             return;
         }
-        if(TextUtils.isEmpty(password))
+        else
         {
-            Toast.makeText(this,"Please enter Password",Toast.LENGTH_SHORT).show();
+            confirmpassword.setError(null);
+        }
+        if(TextUtils.isEmpty(spassword))
+        {
+            password.setError("Field can't be empty");
             return;
         }
-        if(!password.equals(cpassword))
+        else
         {
-            Toast.makeText(this,"Confirm Password is different!",Toast.LENGTH_SHORT).show();
+            password.setError(null);
+
+        }
+        if(!spassword.equals(scpassword))
+        {
+            confirmpassword.setError("Password doesn't match");
             return;
+        }
+        else
+        {
+            confirmpassword.setError(null);
         }
         boolean chkinternt=chkinternet();
         if(!chkinternt)
@@ -82,7 +106,7 @@ public class SignupActivity extends AppCompatActivity {
         }
         progressDialog.setMessage("Registering User...");
         progressDialog.show();
-        firebaseAuth.createUserWithEmailAndPassword(mail,password).
+        firebaseAuth.createUserWithEmailAndPassword(smail,spassword).
                 addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {

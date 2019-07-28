@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -28,6 +29,12 @@ public class ProfileFormActivity extends AppCompatActivity {
     EditText editTextduration;
     EditText editTextstartingtime;
     EditText editTextnooflectures;
+    TextInputLayout textInputLayoutusername;
+    TextInputLayout textInputLayoutnameoforginsation;
+    TextInputLayout textInputLayoutphhonenumber;
+    TextInputLayout textInputLayoutduration;
+    TextInputLayout textInputLayoutnooflectures;
+    TextInputLayout textInputLayoutstartingtime;
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
     @Override
@@ -40,6 +47,12 @@ public class ProfileFormActivity extends AppCompatActivity {
         editTextduration = (EditText)findViewById(R.id.duration);
         editTextstartingtime = (EditText)findViewById(R.id.startingtime);
         editTextnooflectures = (EditText)findViewById(R.id.nooflectures);
+        textInputLayoutduration=(TextInputLayout)findViewById(R.id.Input_duration);
+        textInputLayoutnameoforginsation=(TextInputLayout)findViewById(R.id.Input_orginationname);
+        textInputLayoutnooflectures=(TextInputLayout)findViewById(R.id.Input_nooflectures);
+        textInputLayoutphhonenumber=(TextInputLayout)findViewById(R.id.Input_phonenumber);
+        textInputLayoutstartingtime=(TextInputLayout)findViewById(R.id.Input_startingtime);
+        textInputLayoutusername=(TextInputLayout)findViewById(R.id.Input_username);
         databaseReference= FirebaseDatabase.getInstance().getReference();
         firebaseAuth = FirebaseAuth.getInstance();
     }
@@ -82,20 +95,32 @@ public class ProfileFormActivity extends AppCompatActivity {
         String username = editTextusername.getText().toString().trim();
         if(TextUtils.isEmpty(username))
         {
-            toastfun("Username can't be empty");
+            textInputLayoutusername.setError("Field can't be empty");
             return;
+        }
+        else
+        {
+            textInputLayoutusername.setError(null);
         }
         String organisationname = editTextnameoforganisation.getText().toString().trim();
         if(TextUtils.isEmpty(organisationname))
         {
-            toastfun("Name of Organisation can't be empty");
+            textInputLayoutnameoforginsation.setError("Field can't be empty");
             return;
+        }
+        else
+        {
+            textInputLayoutnameoforginsation.setError(null);
         }
         String phonenostr = editTextphonenumber.getText().toString().trim();
         if(TextUtils.isEmpty(phonenostr))
         {
-            toastfun("Username can't be empty");
+            textInputLayoutphhonenumber.setError("Field can't be empty");
             return;
+        }
+        else
+        {
+
         }
         if(phonenostr.length()!=10) {
             toastfun("Incorrect Phone Number");

@@ -1,90 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".ProfileFormActivity">
 
-    <EditText
-        android:id="@+id/username"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Input_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="30dp"
-        android:ems="10"
-        android:hint="Username"
-        android:inputType="textPersonName" />
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="22dp"
+        android:layout_marginBottom="5dp"
+        app:boxBackgroundMode="none"
+        app:errorEnabled="true"
+        app:hintAnimationEnabled="false">
 
-    <EditText
-        android:id="@+id/organisationname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/username"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="30dp"
-        android:ems="10"
-        android:hint="Name of Organisation "
-        android:inputType="textPersonName" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="sans-serif"
+            android:hint="Username"
+            android:inputType="textPersonName"
+            android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/phonenumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/organisationname"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="30dp"
-        android:ems="10"
-        android:hint="Phone Number"
-        android:inputType="phone" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/nooflectures"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Input_orginationname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/phonenumber"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="30dp"
-        android:ems="10"
-        android:hint="Number of Lectures (per day) "
-        android:inputType="number" />
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="22dp"
+        android:layout_marginBottom="5dp"
+        app:boxBackgroundMode="none"
+        app:errorEnabled="true"
+        app:hintAnimationEnabled="false">
 
-    <EditText
-        android:id="@+id/duration"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/nooflectures"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="30dp"
-        android:ems="10"
-        android:hint="Duration of Single Period"
-        android:inputType="time" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/organisationname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="sans-serif"
+            android:hint="Name of orgination"
+            android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/startingtime"
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Input_phonenumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/duration"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="30dp"
-        android:ems="10"
-        android:hint="Starting Time"
-        android:inputType="time" />
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="22dp"
+        android:layout_marginBottom="5dp"
+        app:boxBackgroundMode="none"
+        app:errorEnabled="true"
+        app:hintAnimationEnabled="false">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phonenumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="sans-serif"
+            android:hint="Phone number"
+            android:inputType="textPhonetic"
+            android:textSize="20sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Input_nooflectures"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="22dp"
+        android:layout_marginBottom="5dp"
+        app:boxBackgroundMode="none"
+        app:errorEnabled="true"
+        app:hintAnimationEnabled="false">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nooflectures"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="sans-serif"
+            android:hint="Number of lectures (per day)"
+            android:textSize="20sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Input_duration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="22dp"
+        android:layout_marginBottom="5dp"
+        app:boxBackgroundMode="none"
+        app:errorEnabled="true"
+        app:hintAnimationEnabled="false">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/duration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="sans-serif"
+            android:hint="Duration of single period (hh:mm)"
+            android:inputType="time"
+            android:textSize="20sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Input_startingtime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="22dp"
+        app:boxBackgroundMode="none"
+        app:errorEnabled="true"
+        app:hintAnimationEnabled="false">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/startingtime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="sans-serif"
+            android:hint="Email"
+            android:inputType="time"
+            android:textSize="20sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/done"
-        android:layout_width="wrap_content"
+        android:background="@drawable/round_btn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/startingtime"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="25dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="50dp"
         android:onClick="done"
         android:text="Done" />
-</RelativeLayout>
+</LinearLayout>

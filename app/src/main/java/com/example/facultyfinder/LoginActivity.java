@@ -10,12 +10,14 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -25,11 +27,15 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editTextmail;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
+    private TextInputLayout textInputLayoutmail;
+    private TextInputLayout textInputLayoutpassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.w("thala","viswasam");
         setContentView(R.layout.activity_login);
+        Log.w("thala","vedalam");
         firebaseAuth = FirebaseAuth.getInstance();
         if(firebaseAuth.getCurrentUser()!=null)
         {
@@ -40,6 +46,8 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog =new ProgressDialog(this);
         editTextpassword =(EditText)findViewById(R.id.password);
         editTextmail =(EditText)findViewById(R.id.mail);
+        textInputLayoutmail=(TextInputLayout)findViewById(R.id.TextInput_mail);
+        textInputLayoutpassword=(TextInputLayout)findViewById(R.id.TextInput_password);
     }
 
     public boolean chkinternet()
@@ -58,21 +66,21 @@ public class LoginActivity extends AppCompatActivity {
         String password = editTextpassword.getText().toString().trim();
         if(TextUtils.isEmpty(mail))
         {
-            editTextmail.setError("Field can't be empty");
+            textInputLayoutmail.setError("Field can't be empty");
             return;
         }
         else
         {
-            editTextmail.setError(null);
+            textInputLayoutmail.setError(null);
         }
         if(TextUtils.isEmpty(password))
         {
-            editTextmail.setError("Field can't be empty");
+            textInputLayoutpassword.setError("Field can't be empty");
             return;
         }
         else
         {
-            editTextmail.setError(null);
+            textInputLayoutpassword.setError(null);
         }
         boolean chkinternt=chkinternet();
         if(!chkinternt)
