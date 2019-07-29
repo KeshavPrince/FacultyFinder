@@ -114,7 +114,6 @@ implements NavigationView.OnNavigationItemSelectedListener {
         }
         if(chk) {
             Toast.makeText(this,"Faculty Removed",Toast.LENGTH_SHORT).show();
-
         }
         else
         {

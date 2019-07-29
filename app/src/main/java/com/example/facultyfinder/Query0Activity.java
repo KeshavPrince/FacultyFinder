@@ -136,7 +136,10 @@ public class Query0Activity extends AppCompatActivity
         click=2;
         editTextspecifytime.setVisibility(View.VISIBLE);
     }
-
+    public void tos()
+    {
+        Toast.makeText(this,"No such Faculty exist",Toast.LENGTH_SHORT).show();
+    }
     public void search(View view)
     {
         final String queryfacultyname=editTextqueryfacultyname.getText().toString().trim();
@@ -191,9 +194,10 @@ public class Query0Activity extends AppCompatActivity
                     {
                         Log.w("thala","wolf");
                         solve();
-                        break;
+                        return ;
                     }
                 }
+                tos();
             }
 
             @Override

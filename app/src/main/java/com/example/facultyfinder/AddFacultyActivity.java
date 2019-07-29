@@ -247,6 +247,14 @@ public class AddFacultyActivity extends AppCompatActivity
         {
             textInputLayoutphoneno.setError(null);
         }
+        if(FacultyPhoneno.length()!=10) {
+            textInputLayoutphoneno.setError("Incorrect phone number");
+            return;
+        }
+        else
+        {
+            textInputLayoutphoneno.setError(null);
+        }
         if(mon.size()==0)
         {
             toastfun("Enter faculty's schedule for Monday");

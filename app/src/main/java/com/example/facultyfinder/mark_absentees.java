@@ -8,6 +8,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -42,7 +43,7 @@ public class mark_absentees extends AppCompatActivity
     FirebaseUser user;
     List<FacultyInfo> faculty_listt;
     EditText facultyname;
-
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +67,8 @@ public class mark_absentees extends AppCompatActivity
     @Override
     protected void onStart() {
         super.onStart();
+        progressDialog.setMessage("Fetching Data...");
+        progressDialog.show();
         databaseReference.addValueEventListener(new ValueEventListener() {
 
             @Override
@@ -76,6 +79,7 @@ public class mark_absentees extends AppCompatActivity
                     FacultyInfo f=faculty.getValue(FacultyInfo.class);
                     faculty_listt.add(f);
                 }
+                progressDialog.dismiss();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -142,6 +146,7 @@ public class mark_absentees extends AppCompatActivity
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
     public void restatt()
     {
         boolean chkinternt=chkinternet();
@@ -150,15 +155,17 @@ public class mark_absentees extends AppCompatActivity
             Toast.makeText(this,"No internet Connection..",Toast.LENGTH_SHORT).show();
             return;
         }
+        String fname;
         for(int i=0;i<faculty_listt.size();i++)
         {
-            String fname=faculty_listt.get(i).facultyname;
+            fname=faculty_listt.get(i).facultyname;
             faculty_listt.get(i).present=true;
             databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid()).child("Faculty").child(fname);
             databaseReference.setValue(faculty_listt.get(i));
         }
         Toast.makeText(this,"All faculty are present now",Toast.LENGTH_SHORT).show();
     }
+
     public void resetattendence(View view)
     {
         String fname=facultyname.getText().toString().trim();
