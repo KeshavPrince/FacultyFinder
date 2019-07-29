@@ -15,45 +15,68 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/alegreya_sc"
         android:text="Add Faculty Details"
-        android:textSize="30dp" />
+        android:textSize="26sp"
+        android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/addname"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Input_addname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="22dp"
         android:layout_below="@+id/textView8"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginRight="30dp"
-        android:ems="10"
-        android:hint="Name"
-        android:inputType="textPersonName"
-        android:textSize="18sp" />
+        android:layout_marginRight="22dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
+        app:boxBackgroundMode="none"
+        app:errorEnabled="true"
+        app:hintAnimationEnabled="false">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/addname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="textEmailAddress"
+            android:textSize="18sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Input_addphoneno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="22dp"
+        android:layout_below="@+id/Input_addname"
+        android:layout_marginRight="22dp"
+        android:layout_marginBottom="10dp"
+        app:boxBackgroundMode="none"
+        app:errorEnabled="true"
+        app:hintAnimationEnabled="false">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/addphoneno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Phone Number"
+            android:inputType="textPhonetic"
+            android:textSize="18sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/addphoneno"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="24dp"
-        android:text="Enter faculty schedule "
+        android:layout_below="@+id/Input_addphoneno"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="10dp"
+        android:text="Enter faculty schedule :"
         android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/addphoneno"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/addname"
-        android:layout_centerHorizontal="false"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="30dp"
-        android:ems="10"
-        android:hint="Phone Number"
-        android:inputType="textPersonName"
-        android:textSize="18dp" />
 
     <Button
         android:id="@+id/addmonday"
@@ -61,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView9"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="10dp"
         android:onClick="amonday"
         android:text="Monday"
         android:textSize="14sp" />
@@ -72,7 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/addmonday"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="5dp"
         android:onClick="awednesday"
         android:text="Wednesday" />
 
@@ -82,7 +105,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/addwednesday"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="5dp"
         android:onClick="afriday"
         android:text="Friday" />
 
@@ -92,7 +115,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView9"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/addmonday"
         android:onClick="atuesday"
         android:text="Tuesday" />
@@ -103,7 +126,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/addtuesday"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/addwednesday"
         android:onClick="athursday"
         android:text="Thursday" />
@@ -114,18 +137,21 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/addthursday"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/addfriday"
         android:onClick="asaturday"
         android:text="Saturday" />
 
     <Button
         android:id="@+id/button5"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/addfriday"
-        android:layout_marginLeft="135dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="90dp"
+        android:layout_marginEnd="120dp"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/round_btn"
         android:onClick="uploaddata"
         android:text="Done" />
 

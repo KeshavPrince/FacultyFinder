@@ -18,15 +18,4 @@
         android:alpha="1"
         />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:textSize="30dp"
-        android:textColor="#4CAF50"
-        android:layout_below="@+id/imageView"
-        android:text="Faculty Finder" />
-
-
 </RelativeLayout>

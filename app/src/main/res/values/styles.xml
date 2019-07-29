@@ -6,7 +6,6 @@
         <item name="colorPrimary">#FF9800</item>
         <item name="colorPrimaryDark">#FF9800</item>
         <item name="colorAccent">#FF9800</item>
-        <item name="android:background">#FFFFF9</item>
         <item name="colorButtonNormal">#FF9800</item>
     </style>
 

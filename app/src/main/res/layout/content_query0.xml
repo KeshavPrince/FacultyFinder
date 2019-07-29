@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="60dp"
-        android:text="Faculty Name"
+        android:text="Faculty Name :"
         android:textSize="24dp"
         android:textStyle="bold" />
 
@@ -87,16 +87,14 @@
 
     <Button
         android:id="@+id/searchfaculty"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginStart="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/queryspecfictime"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:onClick="search"
-        android:paddingLeft="30dp"
-        android:paddingTop="20dp"
-        android:paddingRight="30dp"
-        android:paddingBottom="20dp"
+        android:background="@drawable/round_btn"
         android:text="search"
         android:textSize="16sp" />
 

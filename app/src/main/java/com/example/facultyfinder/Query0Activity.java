@@ -268,7 +268,7 @@ public class Query0Activity extends AppCompatActivity
         int chk = sharedPref.getInt(facultyInfo.facultyname, defaultval);
         if(chk==1) {
             showMessage("Phone Number", facultyInfo.getFacultyphoneno());
-            showMessage("Faculty is Expected to be at", ans);
+            showMessage("Faculty is Expected to be in", ans);
         }
         else
         {

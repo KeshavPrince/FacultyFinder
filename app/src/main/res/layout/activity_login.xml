@@ -35,7 +35,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:fontFamily="@font/alegreya_sans_sc"
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:textSize="18sp" />
@@ -58,7 +57,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView5"
             android:ems="10"
-            android:fontFamily="@font/alegreya_sc"
             android:hint="Password"
             android:inputType="textPassword"
             android:textSize="18sp" />

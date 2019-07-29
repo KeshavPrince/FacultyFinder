@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -48,6 +49,8 @@ public class AddFacultyActivity extends AppCompatActivity
     EditText editTextfacultyname;
     EditText editTextfacultyphoneno;
     FacultyInfo facultyInfo;
+    TextInputLayout textInputLayoutname;
+    TextInputLayout textInputLayoutphoneno;
     ProfileInfo profileInfo;
     public String m_Text;
     ArrayList<String> cur=new ArrayList<String>();
@@ -68,6 +71,8 @@ public class AddFacultyActivity extends AppCompatActivity
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
+        textInputLayoutname=(TextInputLayout)findViewById(R.id.Input_addname);
+        textInputLayoutphoneno=(TextInputLayout)findViewById(R.id.Input_addphoneno);
         editTextfacultyname=(EditText)findViewById(R.id.addname);
         editTextfacultyphoneno=(EditText)findViewById(R.id.addphoneno);
         databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid()).child("Profile");
@@ -150,7 +155,7 @@ public class AddFacultyActivity extends AppCompatActivity
                 cur.clear();
                 return;
             }
-            builder.setTitle(day+ ": Period " + Integer.toString(h));
+            builder.setTitle(day+ ": Lecture " + Integer.toString(h));
             View viewInflated = LayoutInflater.from(this).inflate(R.layout.dialog, (ViewGroup) findViewById(android.R.id.content), false);
             final EditText input = (EditText) viewInflated.findViewById(R.id.editTexti);
             builder.setView(viewInflated);
@@ -225,14 +230,22 @@ public class AddFacultyActivity extends AppCompatActivity
         String Facultyname=editTextfacultyname.getText().toString().trim();
         if(TextUtils.isEmpty(Facultyname))
         {
-            toastfun("Faculty Name can't be empty");
+            textInputLayoutname.setError("Field can't be empty");
             return;
+        }
+        else
+        {
+            textInputLayoutname.setError(null);
         }
         String FacultyPhoneno=editTextfacultyphoneno.getText().toString().trim();
         if(TextUtils.isEmpty(FacultyPhoneno))
         {
-            toastfun("Phone number can't be empty");
+            textInputLayoutphoneno.setError("Field can't be empty");
             return;
+        }
+        else
+        {
+            textInputLayoutphoneno.setError(null);
         }
         if(mon.size()==0)
         {
