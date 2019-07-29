@@ -109,11 +109,18 @@ public class mark_absentees extends AppCompatActivity
             return;
         }
         String fname=facultyname.getText().toString().trim();
-        SharedPreferences sharedPref = this.getSharedPreferences(
-                getString(R.string.mark_absentees), Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putInt(fname,0);
-        editor.commit();
+        for(int i=0;i<faculty_listt.size();i++)
+        {
+            String ss=faculty_listt.get(i).facultyname;
+            if(ss.equals(fname))
+            {
+                faculty_listt.get(i).present=false;
+                databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid()).child("Faculty").child(fname);
+                databaseReference.setValue(faculty_listt.get(i));
+                Toast.makeText(this,"Faculty marked Absent",Toast.LENGTH_SHORT).show();
+                break;
+            }
+        }
     }
     public void markabsentees(View view)
     {
@@ -143,15 +150,14 @@ public class mark_absentees extends AppCompatActivity
             Toast.makeText(this,"No internet Connection..",Toast.LENGTH_SHORT).show();
             return;
         }
-        SharedPreferences sharedPref = this.getSharedPreferences(
-                getString(R.string.mark_absentees), Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
         for(int i=0;i<faculty_listt.size();i++)
         {
-            String ss=faculty_listt.get(i).facultyname;
-            editor.putInt(ss,1);
-            editor.apply();
+            String fname=faculty_listt.get(i).facultyname;
+            faculty_listt.get(i).present=true;
+            databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid()).child("Faculty").child(fname);
+            databaseReference.setValue(faculty_listt.get(i));
         }
+        Toast.makeText(this,"All faculty are present now",Toast.LENGTH_SHORT).show();
     }
     public void resetattendence(View view)
     {

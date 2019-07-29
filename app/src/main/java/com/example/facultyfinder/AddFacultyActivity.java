@@ -277,14 +277,9 @@ public class AddFacultyActivity extends AppCompatActivity
             toastfun("Enter faculty's schedule for Saturday");
             return;
         }
-        facultyInfo=new FacultyInfo(Facultyname,FacultyPhoneno,mon,tues,wed,thur,fri,sat);
+        facultyInfo=new FacultyInfo(Facultyname,FacultyPhoneno,true,mon,tues,wed,thur,fri,sat);
         databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid()).child("Faculty").child(Facultyname);
         databaseReference.setValue(facultyInfo);
-        SharedPreferences sharedPref = this.getSharedPreferences(
-                getString(R.string.mark_absentees), Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putInt(Facultyname,1);
-        editor.commit();
         toastfun("Faculty Created!");
 
     }

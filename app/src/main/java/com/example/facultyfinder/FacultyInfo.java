@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class FacultyInfo {
     String facultyname;
     String facultyphoneno;
+    Boolean present;
     ArrayList<String> monday = new ArrayList<String>();
     ArrayList<String> tuesday = new ArrayList<String>();
     ArrayList<String> wednesday = new ArrayList<String>();
@@ -17,9 +18,10 @@ public class FacultyInfo {
 
     }
 
-    public FacultyInfo(String facultyname, String facultyphoneno, ArrayList<String> monday, ArrayList<String> tuesday, ArrayList<String> wednesday, ArrayList<String> thursday, ArrayList<String> friday, ArrayList<String> saturday) {
+    public FacultyInfo(String facultyname, String facultyphoneno,Boolean present, ArrayList<String> monday, ArrayList<String> tuesday, ArrayList<String> wednesday, ArrayList<String> thursday, ArrayList<String> friday, ArrayList<String> saturday) {
         this.facultyname = facultyname;
         this.facultyphoneno = facultyphoneno;
+        this.present=present;
         this.monday = monday;
         this.tuesday = tuesday;
         this.wednesday = wednesday;
@@ -29,7 +31,10 @@ public class FacultyInfo {
     }
 
     //Getters
-
+    public Boolean getPresent()
+    {
+        return present;
+    }
     public String getFacultyname() {
         return facultyname;
     }
@@ -63,7 +68,10 @@ public class FacultyInfo {
     }
 
     //Setters
-
+    public void setPresent(Boolean present)
+    {
+        this.present=present;
+    }
     public void setFacultyname(String facultyname) {
         this.facultyname = facultyname;
     }

@@ -262,11 +262,8 @@ public class Query0Activity extends AppCompatActivity
         {
             ans=facultyInfo.saturday.get(cur);
         }
-        SharedPreferences sharedPref = this.getSharedPreferences(
-                getString(R.string.mark_absentees), Context.MODE_PRIVATE);
-        int defaultval=0;
-        int chk = sharedPref.getInt(facultyInfo.facultyname, defaultval);
-        if(chk==1) {
+        boolean chk=facultyInfo.present;
+        if(chk) {
             showMessage("Phone Number", facultyInfo.getFacultyphoneno());
             showMessage("Faculty is Expected to be in", ans);
         }
