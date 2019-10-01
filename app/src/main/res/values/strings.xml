@@ -20,5 +20,16 @@
     <string name="menu_markabsentees">Mark Absentees</string>
     <string name="menu_removefaculty">Remove Faculty</string>
     <string name="mark_absentees">mark_absentees</string>
+    <string name="add_faculty_details_label">Add Faculty Details</string>
+    <string name="name_hint">Name</string>
+    <string name="phone_hint">Phone</string>
+    <string name="enter_faculty_schedule_label">Enter faculty schedule :</string>
+    <string name="monday_btn_text">Monday</string>
+    <string name="wednesday_btn_text">Wednesday</string>
+    <string name="friday_btn_text">Friday</string>
+    <string name="tuesday_btn_text">Tuesday</string>
+    <string name="thursday_btn_text">Thursday</string>
+    <string name="saturday_btn_text">Saturday</string>
+    <string name="done_btn_text">Done</string>
 
 </resources>

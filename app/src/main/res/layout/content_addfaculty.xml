@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:layout_centerHorizontal="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".AddFacultyActivity"
     tools:showIn="@layout/activity_add_faculty">
 
     <TextView
@@ -16,7 +15,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/alegreya_sc"
-        android:text="Add Faculty Details"
+        android:text="@string/add_faculty_details_label"
         android:textSize="26sp"
         android:textStyle="bold" />
 
@@ -24,11 +23,11 @@
         android:id="@+id/Input_addname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="22dp"
         android:layout_below="@+id/textView8"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="22dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="5dp"
         app:boxBackgroundMode="none"
         app:errorEnabled="true"
         app:hintAnimationEnabled="false">
@@ -38,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Name"
+            android:hint="@string/name_hint"
             android:inputType="textEmailAddress"
             android:textSize="18sp" />
 
@@ -48,8 +47,9 @@
         android:id="@+id/Input_addphoneno"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="22dp"
         android:layout_below="@+id/Input_addname"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_marginLeft="22dp"
         android:layout_marginRight="22dp"
         android:layout_marginBottom="10dp"
         app:boxBackgroundMode="none"
@@ -61,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Phone Number"
+            android:hint="@string/phone_hint"
             android:inputType="textPhonetic"
             android:textSize="18sp" />
 
@@ -72,9 +72,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/Input_addphoneno"
-        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp"
         android:layout_marginTop="10dp"
-        android:text="Enter faculty schedule :"
+        android:layout_marginEnd="22dp"
+        android:text="@string/enter_faculty_schedule_label"
         android:textSize="20sp" />
 
 
@@ -83,10 +84,11 @@
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView9"
-        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="40dp"
         android:onClick="amonday"
-        android:text="Monday"
+        android:text="@string/monday_btn_text"
         android:textSize="14sp" />
 
     <Button
@@ -94,65 +96,71 @@
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/addmonday"
-        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="5dp"
+        android:layout_marginEnd="40dp"
         android:onClick="awednesday"
-        android:text="Wednesday" />
+        android:text="@string/wednesday_btn_text" />
 
     <Button
         android:id="@+id/addfriday"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/addwednesday"
-        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="5dp"
+        android:layout_marginEnd="40dp"
         android:onClick="afriday"
-        android:text="Friday" />
+        android:text="@string/friday_btn_text" />
 
     <Button
         android:id="@+id/addtuesday"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView9"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="0dp"
         android:layout_toEndOf="@+id/addmonday"
         android:onClick="atuesday"
-        android:text="Tuesday" />
+        android:text="@string/tuesday_btn_text" />
 
     <Button
         android:id="@+id/addthursday"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/addtuesday"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="5dp"
+        android:layout_marginEnd="0dp"
         android:layout_toEndOf="@+id/addwednesday"
         android:onClick="athursday"
-        android:text="Thursday" />
+        android:text="@string/thursday_btn_text" />
 
     <Button
         android:id="@+id/addsaturday"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/addthursday"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="5dp"
+        android:layout_marginEnd="0dp"
         android:layout_toEndOf="@+id/addfriday"
         android:onClick="asaturday"
-        android:text="Saturday" />
+        android:text="@string/saturday_btn_text" />
 
     <Button
         android:id="@+id/button5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/addfriday"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="120dp"
-        android:textSize="20sp"
-        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="40dp"
         android:background="@drawable/round_btn"
         android:onClick="uploaddata"
-        android:text="Done" />
+        android:text="@string/done_btn_text"
+        android:textSize="20sp" />
 
 </RelativeLayout>
