@@ -28,7 +28,7 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-       <include layout="@layout/content_addfaculty"></include>
+       <include layout="@layout/content_addfaculty"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
