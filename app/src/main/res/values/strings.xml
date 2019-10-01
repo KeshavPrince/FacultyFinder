@@ -38,5 +38,9 @@
     <string name="log_in_btn_text">LOG IN</string>
     <string name="don_t_have_account_create_one">Don\'t have Account? Create One</string>
     <string name="app_logo_description">App Logo Description</string>
+    <string name="mark_absentees_label">Mark Absentees</string>
+    <string name="faculty_name_hint">Faculty Name</string>
+    <string name="mark_absent_btn_text">mark absent</string>
+    <string name="reset">RESET</string>
 
 </resources>
