@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".LoginActivity">
 
     <TextView
@@ -15,41 +15,39 @@
         android:layout_marginTop="60dp"
         android:layout_marginBottom="30dp"
         android:fontFamily="@font/alegreya_sc"
-        android:text="Log In"
+        android:text="@string/log_in_label"
         android:textColor="#FF9800"
         android:textSize="50sp"
         android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
         android:id="@+id/TextInput_mail"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:errorEnabled="true"
-        android:layout_marginBottom="10dp"
         android:layout_marginLeft="22dp"
         android:layout_marginRight="22dp"
-        >
+        android:layout_marginBottom="10dp"
+        app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/mail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Email"
+            android:hint="@string/email_hint"
             android:inputType="textEmailAddress"
             android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TextInput_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:errorEnabled="true"
-        android:id="@+id/TextInput_password"
-        android:layout_marginBottom="20dp"
-        app:passwordToggleEnabled="true"
         android:layout_marginLeft="22dp"
         android:layout_marginRight="22dp"
-        >
+        android:layout_marginBottom="20dp"
+        app:errorEnabled="true"
+        app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password"
@@ -57,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView5"
             android:ems="10"
-            android:hint="Password"
+            android:hint="@string/password_hint"
             android:inputType="textPassword"
             android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -67,25 +65,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="80dp"
         android:background="@drawable/round_btn"
         android:fontFamily="@font/alegreya_sc"
         android:onClick="login"
-        android:layout_marginStart="80dp"
-        android:layout_marginEnd="80dp"
-        android:text="LOG IN"
-        android:textSize="20sp" />
+        android:text="@string/log_in_btn_text"
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="100dp"
         android:fontFamily="@font/alegreya_sc"
+        android:gravity="bottom"
         android:onClick="gotoSignup"
-        android:text="Don't have Account? Create One "
-        android:textSize="16sp"
+        android:text="@string/don_t_have_account_create_one"
+        android:textSize="20sp"
         android:textStyle="italic" />
 
 </LinearLayout>
