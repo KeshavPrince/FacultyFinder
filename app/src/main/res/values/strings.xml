@@ -31,5 +31,6 @@
     <string name="thursday_btn_text">Thursday</string>
     <string name="saturday_btn_text">Saturday</string>
     <string name="done_btn_text">Done</string>
+    <string name="faculty_list_label">Faculty List</string>
 
 </resources>
