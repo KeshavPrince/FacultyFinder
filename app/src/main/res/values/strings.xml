@@ -50,5 +50,7 @@
     <string name="starting_time_hh_mm">Starting Time(hh:mm)</string>
     <string name="done">Done</string>
     <string name="email">Email</string>
+    <string name="faculty_name">Faculty name</string>
+    <string name="phone_number">Phone number</string>
 
 </resources>
