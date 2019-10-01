@@ -72,7 +72,7 @@
         android:fontFamily="@font/alegreya_sc"
         android:onClick="login"
         android:text="@string/log_in_btn_text"
-        android:textSize="20sp" />
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/textView3"
