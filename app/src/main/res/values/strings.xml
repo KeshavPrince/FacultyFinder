@@ -49,5 +49,6 @@
     <string name="duration_of_single_period_hh_mm">Duration of single period (hh:mm)</string>
     <string name="starting_time_hh_mm">Starting Time(hh:mm)</string>
     <string name="done">Done</string>
+    <string name="email">Email</string>
 
 </resources>
