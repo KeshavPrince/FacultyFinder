@@ -42,5 +42,12 @@
     <string name="faculty_name_hint">Faculty Name</string>
     <string name="mark_absent_btn_text">mark absent</string>
     <string name="reset">RESET</string>
+    <string name="username_hint">Username</string>
+    <string name="name_of_orgination_hint">Name of orgination</string>
+    <string name="phone_number_hint">Phone number</string>
+    <string name="number_of_lectures_per_day">Number of lectures (per day)</string>
+    <string name="duration_of_single_period_hh_mm">Duration of single period (hh:mm)</string>
+    <string name="starting_time_hh_mm">Starting Time(hh:mm)</string>
+    <string name="done">Done</string>
 
 </resources>

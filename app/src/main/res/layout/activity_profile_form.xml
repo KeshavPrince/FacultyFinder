@@ -1,169 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileFormActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Input_username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="22dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="22dp"
-        android:layout_marginBottom="2dp"
-        app:boxBackgroundMode="none"
-        app:errorEnabled="true"
-        app:hintAnimationEnabled="false">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/username"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Input_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:fontFamily="sans-serif"
-            android:hint="Username"
-            android:inputType="textPersonName"
-            android:textSize="18sp" />
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="22dp"
+            android:layout_marginBottom="2dp"
+            android:hint="@string/username_hint"
+            app:boxBackgroundMode="none"
+            app:errorEnabled="true"
+            app:hintAnimationEnabled="false">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:fontFamily="sans-serif"
+                android:inputType="textPersonName"
+                android:textSize="18sp" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Input_orginationname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="22dp"
-        android:layout_marginRight="22dp"
-        android:layout_marginBottom="2dp"
-        app:boxBackgroundMode="none"
-        app:errorEnabled="true"
-        app:hintAnimationEnabled="false">
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/organisationname"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Input_orginationname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:fontFamily="sans-serif"
-            android:hint="Name of orgination"
-            android:textSize="18sp" />
+            android:layout_marginLeft="22dp"
+            android:layout_marginRight="22dp"
+            android:layout_marginBottom="2dp"
+            android:hint="@string/name_of_orgination_hint"
+            app:boxBackgroundMode="none"
+            app:errorEnabled="true"
+            app:hintAnimationEnabled="false">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/organisationname"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:fontFamily="sans-serif"
+                android:textSize="18sp" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Input_phonenumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="22dp"
-        android:layout_marginRight="22dp"
-        android:layout_marginBottom="2dp"
-        app:boxBackgroundMode="none"
-        app:errorEnabled="true"
-        app:hintAnimationEnabled="false">
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/phonenumber"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Input_phonenumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:fontFamily="sans-serif"
-            android:hint="Phone number"
-            android:inputType="textPhonetic"
-            android:textSize="18sp" />
+            android:layout_marginLeft="22dp"
+            android:layout_marginRight="22dp"
+            android:layout_marginBottom="2dp"
+            android:hint="@string/phone_number_hint"
+            app:boxBackgroundMode="none"
+            app:errorEnabled="true"
+            app:hintAnimationEnabled="false">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phonenumber"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:fontFamily="sans-serif"
+                android:inputType="textPhonetic"
+                android:textSize="18sp" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Input_nooflectures"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="22dp"
-        android:layout_marginRight="22dp"
-        android:layout_marginBottom="2dp"
-        app:boxBackgroundMode="none"
-        app:errorEnabled="true"
-        app:hintAnimationEnabled="false">
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/nooflectures"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Input_nooflectures"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:fontFamily="sans-serif"
-            android:hint="Number of lectures (per day)"
-            android:textSize="18sp" />
+            android:layout_marginLeft="22dp"
+            android:layout_marginRight="22dp"
+            android:layout_marginBottom="2dp"
+            android:hint="@string/number_of_lectures_per_day"
+            app:boxBackgroundMode="none"
+            app:errorEnabled="true"
+            app:hintAnimationEnabled="false">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nooflectures"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:fontFamily="sans-serif"
+                android:textSize="18sp" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Input_duration"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="22dp"
-        android:layout_marginRight="22dp"
-        android:layout_marginBottom="2dp"
-        app:boxBackgroundMode="none"
-        app:errorEnabled="true"
-        app:hintAnimationEnabled="false">
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/duration"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Input_duration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:fontFamily="sans-serif"
-            android:hint="Duration of single period (hh:mm)"
-            android:inputType="time"
-            android:textSize="18sp" />
+            android:layout_marginLeft="22dp"
+            android:layout_marginRight="22dp"
+            android:layout_marginBottom="2dp"
+            app:boxBackgroundMode="none"
+            android:hint="@string/duration_of_single_period_hh_mm"
+            app:errorEnabled="true"
+            app:hintAnimationEnabled="false">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/duration"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:fontFamily="sans-serif"
+                android:inputType="time"
+                android:textSize="18sp" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Input_startingtime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="22dp"
-        android:layout_marginRight="22dp"
-        app:boxBackgroundMode="none"
-        app:errorEnabled="true"
-        app:hintAnimationEnabled="false">
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/startingtime"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Input_startingtime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:fontFamily="sans-serif"
-            android:hint="Starting Time(hh:mm)"
-            android:inputType="time"
+            android:layout_marginLeft="22dp"
+            android:layout_marginRight="22dp"
+            app:boxBackgroundMode="none"
+            android:hint="@string/starting_time_hh_mm"
+            app:errorEnabled="true"
+            app:hintAnimationEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/startingtime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="sans-serif"
+                android:inputType="time"
+                android:textSize="18sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/done"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginBottom="60dp"
+            android:background="@drawable/round_btn"
+            android:onClick="done"
+            android:text="@string/done"
             android:textSize="18sp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/done"
-        android:background="@drawable/round_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="80dp"
-        android:layout_marginTop="20dp"
-        android:textSize="18dp"
-        android:layout_marginBottom="60dp"
-        android:layout_marginStart="80dp"
-        android:onClick="done"
-        android:text="Done" />
     </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+</ScrollView>
