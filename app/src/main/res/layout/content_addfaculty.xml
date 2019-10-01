@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:layout_centerHorizontal="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".AddFacultyActivity"
     tools:showIn="@layout/activity_add_faculty">
 
     <TextView
@@ -21,14 +22,14 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Input_addname"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView8"
-        android:layout_marginLeft="22dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="22dp"
-        android:layout_marginBottom="10dp"
-        app:boxBackgroundMode="none"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         app:errorEnabled="true"
         app:hintAnimationEnabled="false">
 
@@ -38,19 +39,21 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/name_hint"
-            android:inputType="textEmailAddress"
+            android:inputType="textPersonName"
             android:textSize="18sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Input_addphoneno"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/Input_addname"
-        android:layout_marginLeft="22dp"
-        android:layout_marginRight="22dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         app:boxBackgroundMode="none"
         app:errorEnabled="true"
         app:hintAnimationEnabled="false">
@@ -61,7 +64,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/phone_hint"
-            android:inputType="textPhonetic"
+            android:inputType="phone"
             android:textSize="18sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
