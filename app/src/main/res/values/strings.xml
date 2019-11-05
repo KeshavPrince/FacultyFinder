@@ -20,5 +20,37 @@
     <string name="menu_markabsentees">Mark Absentees</string>
     <string name="menu_removefaculty">Remove Faculty</string>
     <string name="mark_absentees">mark_absentees</string>
+    <string name="add_faculty_details_label">Add Faculty Details</string>
+    <string name="name_hint">Name</string>
+    <string name="phone_hint">Phone</string>
+    <string name="enter_faculty_schedule_label">Enter faculty schedule :</string>
+    <string name="monday_btn_text">Monday</string>
+    <string name="wednesday_btn_text">Wednesday</string>
+    <string name="friday_btn_text">Friday</string>
+    <string name="tuesday_btn_text">Tuesday</string>
+    <string name="thursday_btn_text">Thursday</string>
+    <string name="saturday_btn_text">Saturday</string>
+    <string name="done_btn_text">Done</string>
+    <string name="faculty_list_label">Faculty List</string>
+    <string name="email_hint">Email</string>
+    <string name="log_in_label">Log In</string>
+    <string name="password_hint">Password</string>
+    <string name="log_in_btn_text">LOG IN</string>
+    <string name="don_t_have_account_create_one">Don\'t have Account? Create One</string>
+    <string name="app_logo_description">App Logo Description</string>
+    <string name="mark_absentees_label">Mark Absentees</string>
+    <string name="faculty_name_hint">Faculty Name</string>
+    <string name="mark_absent_btn_text">mark absent</string>
+    <string name="reset">RESET</string>
+    <string name="username_hint">Username</string>
+    <string name="name_of_orgination_hint">Name of orgination</string>
+    <string name="phone_number_hint">Phone number</string>
+    <string name="number_of_lectures_per_day">Number of lectures (per day)</string>
+    <string name="duration_of_single_period_hh_mm">Duration of single period (hh:mm)</string>
+    <string name="starting_time_hh_mm">Starting Time(hh:mm)</string>
+    <string name="done">Done</string>
+    <string name="email">Email</string>
+    <string name="faculty_name">Faculty name</string>
+    <string name="phone_number">Phone number</string>
 
 </resources>

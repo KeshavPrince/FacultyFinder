@@ -6,43 +6,45 @@
 
     <application
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".mark_absentees"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+        <activity
+            android:name=".mark_absentees"
+            android:theme="@style/AddFacultyTheme" />
         <activity
             android:name=".Removefaculty_Activity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AddFacultyTheme" />
         <activity
             android:name=".Faculty_list"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AddFacultyTheme" />
         <activity
             android:name=".ProfileActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AddFacultyTheme" />
         <activity
             android:name=".AddFacultyActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AddFacultyTheme" />
         <activity android:name=".ProfileFormActivity" />
         <activity
             android:name=".Query0Activity"
             android:label="@string/title_activity_query0"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AddFacultyTheme" />
         <activity
             android:name=".SignupActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AddFacultyTheme" />
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AddFacultyTheme" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBarr">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
 

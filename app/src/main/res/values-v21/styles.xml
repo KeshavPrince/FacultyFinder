@@ -1,8 +1,29 @@
 <resources>
 
-    <style name="AppTheme.NoActionBar">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#FF9800</item>
+        <item name="colorPrimaryDark">#FF9800</item>
+        <item name="colorAccent">#FF9800</item>
+        <item name="colorButtonNormal">#FF9800</item>
+    </style>
+
+    <style name="AddFacultyTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
+        <item name="colorPrimary">#FF9800</item>
+        <item name="colorPrimaryDark">#FF9800</item>
+        <item name="colorAccent">#FF9800</item>
+        <item name="colorButtonNormal">#FF9800</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+    <style name="AppTheme.NoActionBarr">
+        <item name="colorPrimaryDark">#1B5E20</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
 </resources>
