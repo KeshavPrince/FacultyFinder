@@ -50,6 +50,7 @@ public class mark_absentees extends AppCompatActivity
         setContentView(R.layout.activity_mark_absentees);
         firebaseAuth = FirebaseAuth.getInstance();
         faculty_listt=new ArrayList<>();
+        progressDialog =new ProgressDialog(this);
         user = firebaseAuth.getCurrentUser();
         facultyname=(EditText)findViewById(R.id.facultynameabsent);
         databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid()).child("Faculty");
