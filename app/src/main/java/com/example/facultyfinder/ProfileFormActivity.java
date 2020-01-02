@@ -75,12 +75,21 @@ public class ProfileFormActivity extends AppCompatActivity {
     }
     public Integer totimee(String s)
     {
-        Integer res;
-        String ns="";
-        for(int i=0;i<s.length();i++)
-            if(s.charAt(i)!=':')
-                ns+=s.charAt(i);
-        res=Integer.parseInt(ns);
+        Integer res,a,b;
+        String ns="", nr = "";
+        Integer f = 0;
+        for(int i=0;i<s.length();i++) {
+            if (s.charAt(i) == ':') {
+                f = 1;
+                continue;
+            }
+            if (f == 0)
+                ns += s.charAt(i);
+            else
+                nr += s.charAt(i);
+        }
+        a = Integer.parseInt(ns);
+        res = a * 60 + Integer.parseInt(nr);
         return res;
 
     }

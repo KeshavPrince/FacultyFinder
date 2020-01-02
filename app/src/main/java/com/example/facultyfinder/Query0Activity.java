@@ -140,6 +140,29 @@ public class Query0Activity extends AppCompatActivity
     {
         Toast.makeText(this,"No such Faculty exist",Toast.LENGTH_SHORT).show();
     }
+
+    public Integer totimee(String s)
+    {
+        Integer res,a,b;
+        String ns="", nr = "";
+        Integer f = 0;
+        for(int i=0;i<s.length();i++) {
+            if (s.charAt(i) == ':') {
+                f = 1;
+                continue;
+            }
+            if (f == 0)
+                ns += s.charAt(i);
+            else
+                nr += s.charAt(i);
+        }
+        a = Integer.parseInt(ns);
+        Log.w("Thala is ",Integer.toString(a));
+        res = a * 60 + Integer.parseInt(nr);
+        return res;
+
+    }
+
     public void search(View view)
     {
         final String queryfacultyname=editTextqueryfacultyname.getText().toString().trim();
@@ -165,23 +188,15 @@ public class Query0Activity extends AppCompatActivity
             SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
             String time =format.format(c.getTime());
             dow =c.get(Calendar.DAY_OF_WEEK);
-            String s1=time.substring(0,time.indexOf(":"));
-            String s2=time.substring(time.indexOf(":")+1);
-            String s3=s2.substring(0,time.indexOf(":"));
-            Integer a=Integer.valueOf(s1);
-            Integer b=Integer.valueOf(s3);
-            querytime=(a*100)+b;}
+            querytime = totimee(time);
+        }
         else
         {
             dow =c.get(Calendar.DAY_OF_WEEK);
             String time= editTextspecifytime.getText().toString();
-            String s1=time.substring(0,time.indexOf(":"));
-            String s2=time.substring(time.indexOf(":")+1);
-            String s3=s2.substring(0,time.indexOf(":"));
-            Integer a=Integer.valueOf(s1);
-            Integer b=Integer.valueOf(s3);
-            querytime=(a*100)+b;
+            querytime = totimee(time);
         }
+
         Log.w("thala as Always",Integer.toString(querytime));
         Log.w("thala as Always",Integer.toString(dow));
         databaseReference.addValueEventListener(new ValueEventListener() {

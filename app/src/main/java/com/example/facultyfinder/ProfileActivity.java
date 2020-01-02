@@ -44,6 +44,7 @@ public class ProfileActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        Log.w("Thala","kp");
         progressDialog =new ProgressDialog(this);
         setfront();
         Toolbar toolbar = findViewById(R.id.toolbarprofile);
