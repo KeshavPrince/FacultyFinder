@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +25,7 @@ public class UniversityList extends AppCompatActivity {
     DatabaseReference reference;
     RecyclerView universitylist;
     ArrayList<university_name> list;
+    private ProgressDialog progressDialog;
     UniversityAdapter universityAdapter;
 
     @Override
@@ -33,6 +35,7 @@ public class UniversityList extends AppCompatActivity {
 
         name = (TextView)findViewById(R.id.university_name);
         universitylist = findViewById(R.id.unilist);
+        progressDialog =new ProgressDialog(this);
         universitylist.setLayoutManager(new LinearLayoutManager(this));
         list = new ArrayList<university_name>();
         Log.w("thala","kingasd");

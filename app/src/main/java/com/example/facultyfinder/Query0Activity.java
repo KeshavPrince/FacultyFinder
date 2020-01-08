@@ -1,5 +1,6 @@
 package com.example.facultyfinder;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -37,6 +38,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -61,6 +63,8 @@ public class Query0Activity extends AppCompatActivity
     Integer dow ,querytime;
     DatabaseReference databaseReference;
     String UniversityName;
+    DataSnapshot current;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,14 +74,18 @@ public class Query0Activity extends AppCompatActivity
         Log.w("thala","vailmai");
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
+        progressDialog =new ProgressDialog(this);
         Intent intent = getIntent();
         UniversityName = intent.getStringExtra("name");
+        progressDialog.setMessage("Loading..");
+        progressDialog.show();
         if(UniversityName.length() == 0) {
             databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid()).child("Profile");
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     profileInfo = dataSnapshot.getValue(ProfileInfo.class);
+                    progressDialog.dismiss();
                 }
 
                 @Override
@@ -92,7 +100,7 @@ public class Query0Activity extends AppCompatActivity
             databaseReference.addValueEventListener(new ValueEventListener() {
 
                 @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                     Log.w("thala","ing");
                     for(DataSnapshot node: dataSnapshot.getChildren())
@@ -100,14 +108,17 @@ public class Query0Activity extends AppCompatActivity
                         DataSnapshot profile = node.child("Profile");
                         Log.w("thala","g");
                         profileInfo = profile.getValue(ProfileInfo.class);
-                        if(profileInfo.getOrganisationname().equals(UniversityName))
+                        if(profileInfo.getOrganisationname().equals(UniversityName)) {
+                            current = node.child("Faculty");
                             break;
+                        }
 
                     }
+                    progressDialog.dismiss();
                 }
 
                 @Override
-                public void onCancelled(DatabaseError databaseError) {
+                public void onCancelled(@NonNull DatabaseError databaseError) {
                     // set code to show an error
                     Log.w("thala","ing");
                 }
@@ -115,7 +126,6 @@ public class Query0Activity extends AppCompatActivity
         }
         Log.w("thala",UniversityName);
         setSupportActionBar(toolbar);
-        databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid()).child("Faculty");
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -229,28 +239,42 @@ public class Query0Activity extends AppCompatActivity
 
         Log.w("thala as Always",Integer.toString(querytime));
         Log.w("thala as Always",Integer.toString(dow));
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot x:dataSnapshot.getChildren())
-                {
-                    facultyInfo=x.getValue(FacultyInfo.class);
-                    if(queryfacultyname.equals(facultyInfo.facultyname))
-                    {
-                        Log.w("thala","wolf");
-                        solve();
-                        return ;
+
+        if(UniversityName.length() == 0) {
+            databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid()).child("Faculty");
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot x : dataSnapshot.getChildren()) {
+                        facultyInfo = x.getValue(FacultyInfo.class);
+                        if (queryfacultyname.equals(facultyInfo.facultyname)) {
+                            Log.w("thala", "wolf");
+                            solve();
+                            return;
+                        }
                     }
+                    tos();
                 }
-                tos();
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
+        else {
+
+            for (DataSnapshot x : current.getChildren()) {
+                facultyInfo = x.getValue(FacultyInfo.class);
+                if (queryfacultyname.equals(facultyInfo.facultyname)) {
+                    Log.w("thala", "wolf");
+                    solve();
+                    return;
+                }
             }
+            tos();
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
+        }
 
     }
     public boolean chkinternet()
