@@ -60,32 +60,62 @@ public class Query0Activity extends AppCompatActivity
     ProfileInfo profileInfo;
     Integer dow ,querytime;
     DatabaseReference databaseReference;
+    String UniversityName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_query0);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        Log.w("thala","vailmai");
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
-        databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid()).child("Profile");
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                profileInfo=dataSnapshot.getValue(ProfileInfo.class);
-            }
+        Intent intent = getIntent();
+        UniversityName = intent.getStringExtra("name");
+        if(UniversityName.length() == 0) {
+            databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid()).child("Profile");
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    profileInfo = dataSnapshot.getValue(ProfileInfo.class);
+                }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
+        }
+        else {
+            databaseReference = FirebaseDatabase.getInstance().getReference();
+            Log.w("thala","kings");
+            databaseReference.addValueEventListener(new ValueEventListener() {
+
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    Log.w("thala","ing");
+                    for(DataSnapshot node: dataSnapshot.getChildren())
+                    {
+                        DataSnapshot profile = node.child("Profile");
+                        Log.w("thala","g");
+                        profileInfo = profile.getValue(ProfileInfo.class);
+                        if(profileInfo.getOrganisationname().equals(UniversityName))
+                            break;
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    // set code to show an error
+                    Log.w("thala","ing");
+                }
+            });
+        }
+        Log.w("thala",UniversityName);
         setSupportActionBar(toolbar);
         databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid()).child("Faculty");
-        if(firebaseAuth.getCurrentUser()==null) {
-            Intent LoginIntent = new Intent(Query0Activity.this, LoginActivity.class);
-            startActivity(LoginIntent);
-            finish();
-        }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

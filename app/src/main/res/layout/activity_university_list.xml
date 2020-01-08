@@ -4,13 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#FF9800"
     tools:context=".UniversityList">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
-        android:background="#131E69">
+        android:layout_height="130dp"
+        android:background="#FF9800">
 
         <TextView
             android:id="@+id/title"
@@ -19,7 +20,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/montserrat"
-            android:text="MY GROUPS"
+            android:text="UNIVERSITIES"
             android:textColor="#FFF"
             android:textSize="32sp"
             android:textStyle="bold"></TextView>
@@ -28,18 +29,14 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="20dp"
-            android:background="#131E69">
+            android:background="#FF9800">
         </View>
-
-
     </LinearLayout>
-
-
-
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/unilist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-60dp"
+        android:layout_marginTop="-30dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         >

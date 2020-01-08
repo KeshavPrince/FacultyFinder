@@ -12,7 +12,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.internal.measurement.zzm;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +39,8 @@ public class ProfileFormActivity extends AppCompatActivity {
     TextInputLayout textInputLayoutstartingtime;
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
+    FirebaseAnalytics mFirebaseAnalytics;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +59,7 @@ public class ProfileFormActivity extends AppCompatActivity {
         textInputLayoutusername=(TextInputLayout)findViewById(R.id.Input_username);
         databaseReference= FirebaseDatabase.getInstance().getReference();
         firebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
     }
 
 
@@ -184,6 +189,8 @@ public class ProfileFormActivity extends AppCompatActivity {
         ProfileInfo profileInfo = new ProfileInfo(username,phonenostr,organisationname,nooflectures,duration,startingtime);
         FirebaseUser user = firebaseAuth.getCurrentUser();
         databaseReference.child(user.getUid()).child("Profile").setValue(profileInfo);
+        databaseReference= FirebaseDatabase.getInstance().getReference();
+
         toastfun("Data Register Successfully");
         Intent QueryIntent= new Intent(ProfileFormActivity.this,Query0Activity.class);
         startActivity(QueryIntent);

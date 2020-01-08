@@ -47,7 +47,7 @@ public class Faculty_list extends AppCompatActivity implements NavigationView.On
         faculty_list=new ArrayList<>();
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
-        databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid()).child("Faculty");
+        databaseReference = FirebaseDatabase.getInstance().getReference();
         Toolbar toolbar = findViewById(R.id.toolbarfacultylist);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layoutfacultylist);
@@ -68,10 +68,13 @@ public class Faculty_list extends AppCompatActivity implements NavigationView.On
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 faculty_list.clear();
-                for(DataSnapshot faculty:dataSnapshot.getChildren())
+                for(DataSnapshot node:dataSnapshot.getChildren())
                 {
-                    FacultyInfo f=faculty.getValue(FacultyInfo.class);
-                    faculty_list.add(f);
+                    DataSnapshot faculty = node.child("Faculty");
+                    for(DataSnapshot fac : faculty.getChildren()) {
+                        FacultyInfo f = fac.getValue(FacultyInfo.class);
+                        faculty_list.add(f);
+                    }
                 }
                 facultylistview adapter= new facultylistview(Faculty_list.this,faculty_list);
                 flistView.setAdapter(adapter);
