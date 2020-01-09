@@ -8,10 +8,10 @@
     tools:context=".UniversityList">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="130dp"
-        android:background="#FF9800">
+        android:background="#85FF9800"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/title"
@@ -29,18 +29,28 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="20dp"
-            android:background="#FF9800">
-        </View>
+            android:background="#FF9800"></View>
     </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/unilist"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-30dp"
+        android:layout_width="367dp"
+        android:layout_height="550dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        >
+        android:layout_marginTop="-30dp"
+        android:layout_marginRight="16dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:onClick="gotoLogin"
+        android:layout_marginLeft="80dp"
+        android:layout_marginRight="80dp"
+        android:background="#E000BCD4"
+        android:fontFamily="@font/montserrat"
+        android:text="Log In / Sign Up"
+        android:textStyle="bold"></Button>
 </LinearLayout>

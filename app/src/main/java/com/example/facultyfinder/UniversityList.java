@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -67,5 +68,11 @@ public class UniversityList extends AppCompatActivity {
             }
         });
 
+    }
+    public void gotoLogin(View view)
+    {
+        Intent LoginIntent= new Intent(UniversityList.this,LoginActivity.class);
+        startActivity(LoginIntent);
+        finish();
     }
 }
