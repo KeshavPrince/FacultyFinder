@@ -47,6 +47,8 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
+
 public class Query0Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -79,7 +81,7 @@ public class Query0Activity extends AppCompatActivity
         UniversityName = intent.getStringExtra("name");
         progressDialog.setMessage("Loading..");
         progressDialog.show();
-        if(UniversityName.length() == 0) {
+        if(UniversityName == NULL) {
             databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid()).child("Profile");
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -124,7 +126,6 @@ public class Query0Activity extends AppCompatActivity
                 }
             });
         }
-        Log.w("thala",UniversityName);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -145,7 +146,7 @@ public class Query0Activity extends AppCompatActivity
     public void signout()
     {
         firebaseAuth.signOut();
-        Intent LoginIntent= new Intent(Query0Activity.this,LoginActivity.class);
+        Intent LoginIntent= new Intent(Query0Activity.this,UniversityList.class);
         startActivity(LoginIntent);
         finish();
     }
@@ -205,12 +206,13 @@ public class Query0Activity extends AppCompatActivity
 
     public void search(View view)
     {
-        final String queryfacultyname=editTextqueryfacultyname.getText().toString().trim();
-        if(TextUtils.isEmpty(queryfacultyname))
+        String queryfacultynam=editTextqueryfacultyname.getText().toString().trim();
+        if(TextUtils.isEmpty(queryfacultynam))
         {
             Toast.makeText(this,"Please enter Faculty name",Toast.LENGTH_SHORT).show();
             return;
         }
+        final String queryfacultyname = queryfacultynam.toLowerCase();
         if(click==-1)
         {
             Toast.makeText(this,"Please choose from Time options",Toast.LENGTH_SHORT).show();
@@ -240,7 +242,7 @@ public class Query0Activity extends AppCompatActivity
         Log.w("thala as Always",Integer.toString(querytime));
         Log.w("thala as Always",Integer.toString(dow));
 
-        if(UniversityName.length() == 0) {
+        if(UniversityName == NULL) {
             databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid()).child("Faculty");
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -359,40 +361,48 @@ public class Query0Activity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         navEmail =(TextView)findViewById(R.id.navEmail);
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        navEmail.setText(user.getEmail());
-        int id = item.getItemId();
+        if(user != null) {
+            navEmail.setText(user.getEmail());
+            int id = item.getItemId();
+            if (id == R.id.nav_profile) {
+                Intent ProfileIntent = new Intent(Query0Activity.this, ProfileActivity.class);
+                ProfileIntent.putExtra("name", UniversityName);
+                startActivity(ProfileIntent);
+                finish();
+            } else if (id == R.id.nav_home) {
 
-        if (id == R.id.nav_profile) {
-            Intent ProfileIntent = new Intent(Query0Activity.this, ProfileActivity.class);
-            startActivity(ProfileIntent);
-            finish();
-        }else if (id == R.id.nav_home) {
+            } else if (id == R.id.nav_facultylist) {
+                Intent ProfileIntent = new Intent(Query0Activity.this, Faculty_list.class);
+                ProfileIntent.putExtra("name", UniversityName);
+                startActivity(ProfileIntent);
+                finish();
+            } else if (id == R.id.nav_signout) {
+                signout();
+            } else if (id == R.id.nav_markabsentees) {
+                Intent markabsentIntent = new Intent(Query0Activity.this, mark_absentees.class);
+                markabsentIntent.putExtra("name", UniversityName);
+                startActivity(markabsentIntent);
+                finish();
 
+            } else if (id == R.id.nav_addfaculty) {
+                Intent AddfacultyIntent = new Intent(Query0Activity.this, AddFacultyActivity.class);
+                AddfacultyIntent.putExtra("name", UniversityName);
+                startActivity(AddfacultyIntent);
+                finish();
+            } else if (id == R.id.nav_removefaculty) {
+                Intent RemoveIntent = new Intent(Query0Activity.this, Removefaculty_Activity.class);
+                RemoveIntent.putExtra("name", UniversityName);
+                startActivity(RemoveIntent);
+                finish();
+            }
+
+            DrawerLayout drawer = findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
         }
-        else if (id == R.id.nav_facultylist) {
-            Intent ProfileIntent = new Intent(Query0Activity.this, Faculty_list.class);
-            startActivity(ProfileIntent);
-            finish();
-        } else if (id == R.id.nav_signout) {
-            signout();
-        } else if (id == R.id.nav_markabsentees) {
-            Intent markabsentIntent= new Intent(Query0Activity.this,mark_absentees.class);
-            startActivity(markabsentIntent);
-            finish();
-
-        } else if (id == R.id.nav_addfaculty) {
-            Intent AddfacultyIntent = new Intent(Query0Activity.this, AddFacultyActivity.class);
-            startActivity(AddfacultyIntent);
-            finish();
-        } else if (id == R.id.nav_removefaculty) {
-            Intent RemoveIntent = new Intent(Query0Activity.this, Removefaculty_Activity.class);
-            startActivity(RemoveIntent);
-            finish();
+        else
+        {
+            Toast.makeText(this,"You are not Authorised.",Toast.LENGTH_SHORT).show();
         }
-
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 }

@@ -48,11 +48,14 @@ public class UniversityList extends AppCompatActivity {
 
                 for(DataSnapshot node: dataSnapshot.getChildren())
                 {
-                    Log.w("thala","ing");
+//                    Log.w("thala","ing");
                     DataSnapshot profile = node.child("Profile");
-                    Log.w("thala","g");
+//                    Log.w("thala","g");
                     ProfileInfo pro = profile.getValue(ProfileInfo.class);
-                    university_name u = new university_name(pro.getOrganisationname());
+                    String s = pro.getOrganisationname().toLowerCase();
+                    String res = Camelcaseit(s);
+                    Log.w("thala",res);
+                    university_name u = new university_name(res);
                     list.add(u);
 
                 }
@@ -68,6 +71,23 @@ public class UniversityList extends AppCompatActivity {
             }
         });
 
+    }
+    public String Camelcaseit(String s)
+    {
+        char ch[] = new char[s.length()];
+        ch[0] = (char)(s.charAt(0) - 32);
+        for(int i = 1; i < s.length(); ++i)
+        {
+            if(s.charAt(i) != ' ' && s.charAt(i - 1) == ' ')
+            {
+                ch[i] = (char)(s.charAt(i) - 32);
+            }
+            else {
+                ch[i] = s.charAt(i);
+            }
+        }
+        String res = new String(ch);
+        return res;
     }
     public void gotoLogin(View view)
     {

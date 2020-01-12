@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="60dp"
     android:background="@drawable/bgitemuniversity"
-    android:layout_marginBottom="10dp"
+    android:layout_marginBottom="20dp"
     >
 
     <TextView
@@ -13,7 +13,7 @@
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:text="Group Name"
-        android:textSize="24sp"
+        android:textSize="22sp"
         android:textStyle="bold">
     </TextView>
 

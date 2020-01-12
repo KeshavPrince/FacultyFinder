@@ -152,7 +152,7 @@ implements NavigationView.OnNavigationItemSelectedListener {
     public void signout()
     {
         firebaseAuth.signOut();
-        Intent LoginIntent= new Intent(Removefaculty_Activity.this,LoginActivity.class);
+        Intent LoginIntent= new Intent(Removefaculty_Activity.this,UniversityList.class);
         startActivity(LoginIntent);
         finish();
     }

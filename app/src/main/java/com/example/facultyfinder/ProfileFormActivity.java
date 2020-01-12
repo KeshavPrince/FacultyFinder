@@ -8,6 +8,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -96,7 +97,6 @@ public class ProfileFormActivity extends AppCompatActivity {
         a = Integer.parseInt(ns);
         res = a * 60 + Integer.parseInt(nr);
         return res;
-
     }
     public void done(View view)
     {
@@ -126,6 +126,7 @@ public class ProfileFormActivity extends AppCompatActivity {
         {
             textInputLayoutnameoforginsation.setError(null);
         }
+        organisationname = organisationname.toLowerCase();
         String phonenostr = editTextphonenumber.getText().toString().trim();
         if(TextUtils.isEmpty(phonenostr))
         {
@@ -185,12 +186,12 @@ public class ProfileFormActivity extends AppCompatActivity {
         {
             textInputLayoutduration.setError(null);
         }
+        Log.w("thala","here we go");
         Integer startingtime = totimee(startingtimestr);
         ProfileInfo profileInfo = new ProfileInfo(username,phonenostr,organisationname,nooflectures,duration,startingtime);
         FirebaseUser user = firebaseAuth.getCurrentUser();
         databaseReference.child(user.getUid()).child("Profile").setValue(profileInfo);
         databaseReference= FirebaseDatabase.getInstance().getReference();
-
         toastfun("Data Register Successfully");
         Intent QueryIntent= new Intent(ProfileFormActivity.this,Query0Activity.class);
         startActivity(QueryIntent);

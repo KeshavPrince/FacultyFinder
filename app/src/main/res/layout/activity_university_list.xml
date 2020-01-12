@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FF9800"
+    android:background="#000000"
     tools:context=".UniversityList">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="130dp"
-        android:background="#85FF9800"
+        android:background="#000000"
         android:orientation="vertical">
 
         <TextView
@@ -28,14 +28,14 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="20dp"
-            android:background="#FF9800"></View>
+            android:layout_marginTop="10dp"
+            android:background="#000000"></View>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/unilist"
         android:layout_width="367dp"
-        android:layout_height="550dp"
+        android:layout_height="570dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="-30dp"
         android:layout_marginRight="16dp">
@@ -47,6 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:onClick="gotoLogin"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="80dp"
         android:layout_marginRight="80dp"
         android:background="#E000BCD4"

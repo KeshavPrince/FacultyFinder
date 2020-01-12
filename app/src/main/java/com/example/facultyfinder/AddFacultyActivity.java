@@ -237,6 +237,7 @@ public class AddFacultyActivity extends AppCompatActivity
         {
             textInputLayoutname.setError(null);
         }
+        Facultyname = Facultyname.toLowerCase();
         String FacultyPhoneno=editTextfacultyphoneno.getText().toString().trim();
         if(TextUtils.isEmpty(FacultyPhoneno))
         {

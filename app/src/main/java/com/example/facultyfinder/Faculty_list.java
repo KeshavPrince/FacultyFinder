@@ -47,7 +47,7 @@ public class Faculty_list extends AppCompatActivity implements NavigationView.On
         faculty_list=new ArrayList<>();
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid()).child("Faculty");
         Toolbar toolbar = findViewById(R.id.toolbarfacultylist);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layoutfacultylist);
@@ -70,11 +70,12 @@ public class Faculty_list extends AppCompatActivity implements NavigationView.On
                 faculty_list.clear();
                 for(DataSnapshot node:dataSnapshot.getChildren())
                 {
-                    DataSnapshot faculty = node.child("Faculty");
-                    for(DataSnapshot fac : faculty.getChildren()) {
-                        FacultyInfo f = fac.getValue(FacultyInfo.class);
+                        FacultyInfo f = node.getValue(FacultyInfo.class);
+                        String s = f.getFacultyname().toLowerCase();
+                        String res = Camelcaseit(s);
+                        f.setFacultyname(res);
                         faculty_list.add(f);
-                    }
+
                 }
                 facultylistview adapter= new facultylistview(Faculty_list.this,faculty_list);
                 flistView.setAdapter(adapter);
@@ -99,9 +100,26 @@ public class Faculty_list extends AppCompatActivity implements NavigationView.On
     public void signout()
     {
         firebaseAuth.signOut();
-        Intent LoginIntent= new Intent(Faculty_list.this,LoginActivity.class);
+        Intent LoginIntent= new Intent(Faculty_list.this,UniversityList.class);
         startActivity(LoginIntent);
         finish();
+    }
+    public String Camelcaseit(String s)
+    {
+        char ch[] = new char[s.length()];
+        ch[0] = (char)(s.charAt(0) - 32);
+        for(int i = 1; i < s.length(); ++i)
+        {
+            if(s.charAt(i) != ' ' && s.charAt(i - 1) == ' ')
+            {
+                ch[i] = (char)(s.charAt(i) - 32);
+            }
+            else {
+                ch[i] = s.charAt(i);
+            }
+        }
+        String res = new String(ch);
+        return res;
     }
 
     @Override

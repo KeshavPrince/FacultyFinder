@@ -101,7 +101,7 @@ public class mark_absentees extends AppCompatActivity
     public void signout()
     {
         firebaseAuth.signOut();
-        Intent LoginIntent= new Intent(mark_absentees.this,LoginActivity.class);
+        Intent LoginIntent= new Intent(mark_absentees.this,UniversityList.class);
         startActivity(LoginIntent);
         finish();
     }

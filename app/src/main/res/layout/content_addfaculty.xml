@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/alegreya_sc"
         android:text="@string/add_faculty_details_label"
         android:textSize="26sp"
@@ -51,10 +51,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/Input_addname"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="0dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        app:boxBackgroundMode="none"
         app:errorEnabled="true"
         app:hintAnimationEnabled="false">
 
@@ -83,22 +82,22 @@
 
     <Button
         android:id="@+id/addmonday"
-        android:layout_width="120dp"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView9"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
         android:onClick="amonday"
         android:text="@string/monday_btn_text"
-        android:textSize="14sp" />
+         />
 
     <Button
         android:id="@+id/addwednesday"
-        android:layout_width="120dp"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/addmonday"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="40dp"
         android:onClick="awednesday"
@@ -106,10 +105,10 @@
 
     <Button
         android:id="@+id/addfriday"
-        android:layout_width="120dp"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/addwednesday"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="40dp"
         android:onClick="afriday"
@@ -117,11 +116,11 @@
 
     <Button
         android:id="@+id/addtuesday"
-        android:layout_width="120dp"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView9"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="0dp"
         android:layout_toEndOf="@+id/addmonday"
         android:onClick="atuesday"
@@ -129,22 +128,21 @@
 
     <Button
         android:id="@+id/addthursday"
-        android:layout_width="120dp"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/addtuesday"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="0dp"
         android:layout_toEndOf="@+id/addwednesday"
         android:onClick="athursday"
         android:text="@string/thursday_btn_text" />
 
     <Button
         android:id="@+id/addsaturday"
-        android:layout_width="120dp"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/addthursday"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart= "20dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="0dp"
         android:layout_toEndOf="@+id/addfriday"
@@ -157,12 +155,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/addfriday"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="100dp"
         android:background="@drawable/round_btn"
         android:onClick="uploaddata"
         android:text="@string/done_btn_text"
-        android:textSize="20sp" />
+        android:textSize="22sp" />
 
 </RelativeLayout>
